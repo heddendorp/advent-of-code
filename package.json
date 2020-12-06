@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:prod": "cross-env NODE_ENV=production ng build --prod"
+    "build:prod": "cross-env NODE_ENV=production ng build --prod --baseHref advent-of-code"
   },
   "private": true,
   "dependencies": {
