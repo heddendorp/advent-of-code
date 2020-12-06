@@ -1,0 +1,67 @@
+<h1
+  class="text-6xl font-black font-mono text-center my-6 text-transparent bg-clip-text bg-gradient-to-tr from-blue-400 to-blue-500"
+>
+  --- Day 6: Custom Customs ---
+</h1>
+<div
+  class="rounded-2xl p-4 space-y-2 bg-gradient-to-tr from-pink-700 to-pink-900"
+>
+  <div class="mb-8">
+    <h2 class="font-bold text-5xl text-pink-200 mb-4">Part 1</h2>
+    <h3 class="text-gray-100 font-bold text-5xl">Anyone answered yes</h3>
+  </div>
+  <div class="flex flex-row font-mono space-x-4 items-stretch">
+    <ng-container *ngFor="let step of steps1">
+      <div class="flex flex-col space-y-2 justify-center">
+        <span
+          class="bg-gray-300 bg-opacity-70 px-2 rounded text-2xl whitespace-pre-wrap"
+        >
+          {{ step.operation }}
+        </span>
+      </div>
+      <div class="flex flex-col space-y-2 justify-between">
+        <span
+          *ngFor="let text of step.data"
+          class="bg-gray-300 bg-opacity-70 px-2 rounded text-2xl whitespace-pre-wrap"
+          >{{ text }}</span
+        >
+      </div>
+    </ng-container>
+  </div>
+  <div>
+    <button class="rounded border border-white border-solid text-white p-4">
+      Next step
+    </button>
+  </div>
+</div>
+<div
+  class="rounded-2xl p-4 space-y-2 bg-gradient-to-tr from-purple-700 to-purple-900 mt-8"
+>
+  <div class="mb-8">
+    <h2 class="font-bold text-5xl text-purple-200 mb-4">Part 2</h2>
+    <h3 class="text-gray-100 font-bold text-5xl">Everyone answered yes</h3>
+  </div>
+  <div class="flex flex-row font-mono space-x-4 items-stretch">
+    <ng-container *ngFor="let step of steps2">
+      <div class="flex flex-col space-y-2 justify-center">
+        <span
+          class="bg-gray-300 bg-opacity-70 px-2 rounded text-2xl whitespace-pre-wrap"
+        >
+          {{ step.operation }}
+        </span>
+      </div>
+      <div class="flex flex-col space-y-2 justify-between">
+        <span
+          *ngFor="let text of step.data"
+          class="bg-gray-300 bg-opacity-70 px-2 rounded text-2xl whitespace-pre-wrap"
+          >{{ text }}</span
+        >
+      </div>
+    </ng-container>
+  </div>
+  <div>
+    <button class="rounded border border-white border-solid text-white p-4">
+      Next step
+    </button>
+  </div>
+</div>
