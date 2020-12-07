@@ -1,0 +1,44 @@
+<h1
+  class="text-6xl font-black font-mono text-center my-6 text-transparent bg-clip-text bg-gradient-to-tr from-yellow-400 to-yellow-500"
+>
+  --- Day 7: Handy Haversacks ---
+</h1>
+<div
+  class="rounded-2xl p-4 space-y-2 bg-gradient-to-tr from-red-700 to-red-900"
+>
+  <div class="mb-8">
+    <h2 class="font-bold text-5xl text-red-200 mb-4">Part 1</h2>
+    <h3 class="text-gray-100 font-bold text-5xl">At least one gold bag</h3>
+  </div>
+  <div class="flex flex-col items-stretch">
+    <div
+      *ngFor="let step of steps1; let i = index"
+      class="flex flex-row font-mono space-x-4 items-stretch border-b border-white border-solid py-4"
+    >
+      <div class="flex flex-col mr-4 justify-around">
+        <span class="text-9xl font-sans text-white">
+          {{ i + 1 }}
+        </span>
+      </div>
+      <div class="flex flex-col space-y-2 justify-center">
+        <span
+          class="bg-gray-300 bg-opacity-70 px-2 rounded text-2xl whitespace-pre-wrap"
+        >
+          {{ step.operation }}
+        </span>
+      </div>
+      <div class="flex flex-col space-y-2 justify-between">
+        <div
+          class="flex flex-row space-x-2 justify-start"
+          *ngFor="let line of step.display"
+        >
+          <span
+            *ngFor="let item of line"
+            class="px-2 rounded text-2xl whitespace-pre-wrap {{ item.class }}"
+            >{{ item.text }}</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
