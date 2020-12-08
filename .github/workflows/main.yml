@@ -42,6 +42,8 @@ jobs:
         name: Install dependencies
       - run: yarn build:prod
         name: Build project
+      - run: cp dist/adventOfCode/index.html dist/adventOfCode/404.html
+        name: Copy index file to make sure routing works
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
