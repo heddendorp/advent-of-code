@@ -10,6 +10,9 @@ MIT
 @angular/router
 MIT
 
+@ngrx/component
+MIT
+
 css-loader
 MIT
 Copyright JS Foundation and other contributors
