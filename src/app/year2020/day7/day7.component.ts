@@ -1,28 +1,21 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
+import data from './data.json';
+import { nth } from 'lodash-es';
 
 @Component({
   selector: 'app-day7',
   templateUrl: './day7.component.html',
   styleUrls: ['./day7.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Day7Component {
-  private exampleInput = `light red bags contain 1 bright white bag, 2 muted yellow bags.
-dark orange bags contain 3 bright white bags, 4 muted yellow bags.
-bright white bags contain 1 shiny gold bag.
-muted yellow bags contain 2 shiny gold bags, 9 faded blue bags.
-shiny gold bags contain 1 dark olive bag, 2 vibrant plum bags.
-dark olive bags contain 3 faded blue bags, 4 dotted black bags.
-vibrant plum bags contain 5 faded blue bags, 6 dotted black bags.
-faded blue bags contain no other bags.
-dotted black bags contain no other bags.`;
-
   steps1: {
     display: { text: string; class: string }[][];
     data: any;
     operation: string;
   }[] = [];
   steps2: { data: string[]; operation: string }[] = [];
+  private exampleInput = data.example;
+
   constructor() {
     console.log(
       'light red bags contain 1 bright white bag, 2 muted yellow bags.'.match(
@@ -42,14 +35,14 @@ dotted black bags contain no other bags.`;
         .map((line) => [{ class: 'neutral', text: line }]),
     });
     this.steps1.push({
-      data: this.steps1[1].data.map((line) =>
-        line.match(/(\w+ \w+) bags contain(.+)./i).slice(1)
+      data: this.steps1[1].data.map((line: string) =>
+        line.match(/(\w+ \w+) bags contain(.+)./i)?.slice(1)
       ),
       operation: `Find containing bags`,
-      display: this.steps1[1].data.map((line) =>
+      display: this.steps1[1].data.map((line: string) =>
         line
           .match(/(\w+ \w+) bags contain(.+)./i)
-          .slice(1)
+          ?.slice(1)
           .map((token, index) => ({
             text: token,
             class: index ? 'neutral' : 'bag',
@@ -57,31 +50,31 @@ dotted black bags contain no other bags.`;
       ),
     });
     this.steps1.push({
-      data: this.steps1[2].data.map((line) => {
+      data: this.steps1[2].data.map((line: string[]) => {
         const empty = line[1] === ' no other bags';
-        const content = [];
+        const content: string[] = [];
         if (!empty) {
           line[1]
             .split(',')
-            .map((bag) => bag.trim().match(/\d (\w+ \w+) bags?/i)[1])
-            .forEach((color) => content.push(color));
+            .map((bag) => nth(bag.trim().match(/\d (\w+ \w+) bags?/i), 1))
+            .forEach((color) => content.push(color ?? ''));
         }
         return { bag: line[0], empty, content };
       }),
       operation: `Find contained bags`,
       display: this.steps1[2].data
-        .map((line) => {
+        .map((line: string[]) => {
           const empty = line[1] === ' no other bags';
-          const content = [];
+          const content: string[] = [];
           if (!empty) {
             line[1]
               .split(',')
-              .map((bag) => bag.trim().match(/\d (\w+ \w+) bags?/i)[1])
-              .forEach((color) => content.push(color));
+              .map((bag) => nth(bag.trim().match(/\d (\w+ \w+) bags?/i), 1))
+              .forEach((color) => content.push(color ?? ''));
           }
           return { bag: line[0], empty, content };
         })
-        .map((line) => [
+        .map((line: { bag: string; empty: boolean; content: string[] }) => [
           { class: 'bag', text: line.bag },
           ...line.content.map((color) => ({
             text: color,

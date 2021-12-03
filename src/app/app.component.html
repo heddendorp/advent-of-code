@@ -1,12 +1,19 @@
-<ul class="bg-gray-600 p-4 text-white flex flex-row text-2xl space-x-2">
+<ul class="bg-gray-800 p-4 text-white flex flex-row text-2xl space-x-4">
   <li class="mr-4">
-    <img class="h-9" src="./assets/images/star.svg" alt="⭐" />
+    <img alt="⭐" class="h-9" src="./assets/images/star.svg" />
   </li>
-  <li class="mr-2">Advent of code</li>
+  <li class="mr-8">Advent of code</li>
   <li
+    class="hover:border-gray-400 cursor-pointer rounded-full bg-gray-600 border border-solid border-transparent border-2 px-4"
+    routerLink="2021"
+    routerLinkActive="border-gray-200"
+  >
+    2021
+  </li>
+  <li
+    class="hover:border-gray-400 cursor-pointer rounded bg-gray-500 border border-solid border-transparent px-2"
     routerLink="2020"
     routerLinkActive="border-gray-200"
-    class="hover:border-gray-400 cursor-pointer rounded bg-gray-500 border border-solid border-transparent px-2"
   >
     2020
   </li>

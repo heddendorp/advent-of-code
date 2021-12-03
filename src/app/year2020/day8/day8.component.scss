@@ -1,6 +1,7 @@
 :host {
   @apply block p-4;
 }
+
 .execution-grid {
   @apply grid gap-2;
   grid-template-columns: repeat(3, max-content);

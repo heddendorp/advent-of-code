@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
+import { RouterModule, Routes } from '@angular/router';
 import { Day7Component } from './day7.component';
 
 const routes: Routes = [{ path: '', component: Day7Component }];

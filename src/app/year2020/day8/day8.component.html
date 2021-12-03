@@ -10,15 +10,15 @@
     <h2 class="font-bold text-5xl text-yellow-200 mb-4">Part 1</h2>
     <h3 class="text-gray-100 font-bold text-5xl">Code execution</h3>
   </div>
-  <div class="flex flex-row" *ngrxLet="state$; let state">
+  <div *ngIf="state$ | async as state" class="flex flex-row">
     <div class="execution-grid font-mono text-white text-2xl">
       <ng-container *ngFor="let instruction of instructions; let i = index">
         <div>
           <img
-            src="./assets/images/arrow.svg"
-            class="h-8"
-            alt="➡"
             [ngClass]="{ hidden: i != state.next }"
+            alt="➡"
+            class="h-8"
+            src="./assets/images/arrow.svg"
           />
         </div>
         <div>{{ instruction[0] }}</div>
