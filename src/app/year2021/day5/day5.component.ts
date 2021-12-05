@@ -9,6 +9,7 @@ import {
 import { VentLine } from './ventLine';
 import { BehaviorSubject } from 'rxjs';
 import data from './data.json';
+import { chunk } from 'lodash-es';
 
 @Component({
   selector: 'app-day5',
@@ -53,15 +54,20 @@ export class Day5Component implements OnInit, OnDestroy {
       this.canvas.nativeElement.clientWidth,
       this.canvas.nativeElement.clientHeight
     );
-    const lineIterator = lines[Symbol.iterator]();
+    const lineIterator = chunk(lines, Math.max(lines.length / 60, 1))[
+      Symbol.iterator
+    ]();
     const drawLine = () => {
       const nextLine = lineIterator.next();
       if (nextLine.done) {
         return;
       }
-      if (this.ctx) {
-        nextLine.value.draw(this.ctx, this.scale.value);
-      }
+
+      nextLine.value.forEach((line) => {
+        if (this.ctx) {
+          line.draw(this.ctx, this.scale.value);
+        }
+      });
       requestAnimationFrame(drawLine);
     };
     drawLine();
@@ -111,38 +117,32 @@ export class Day5Component implements OnInit, OnDestroy {
     });
     this.intersectionCount.next(pointsWithMoreLines.size);
     this.currentStep.next(4);
-    const points = pointsWithMoreLines.values();
+    const points = new Array(...pointsWithMoreLines);
+    const pointIterator = chunk(points, Math.max(1, points.length / 60))[
+      Symbol.iterator
+    ]();
     const drawPoint = () => {
       requestAnimationFrame(() => {
-        const point = points.next();
-        if (point.value) {
-          const [x, y] = point.value.split(',').map(Number);
-          if (this.ctx) {
-            this.ctx.fillStyle = 'red';
-            this.ctx.rect(
-              x * this.scale.value - 2,
-              y * this.scale.value - 2,
-              4,
-              4
-            );
-            this.ctx.fill();
-          }
+        const points = pointIterator.next();
+        if (points.value) {
+          points.value.forEach((point: string) => {
+            const [x, y] = point.split(',').map(Number);
+            if (this.ctx) {
+              this.ctx.fillStyle = 'red';
+              this.ctx.rect(
+                x * this.scale.value - (this.scale.value > 1 ? 2 : 0.5),
+                y * this.scale.value - (this.scale.value > 1 ? 2 : 0.5),
+                this.scale.value > 1 ? 4 : 1,
+                this.scale.value > 1 ? 4 : 1
+              );
+              this.ctx.fill();
+            }
+          });
           drawPoint();
         }
       });
     };
     drawPoint();
-    /*for (let x = 0; x <= (this.workingArea?.x ?? 0); x++) {
-      for (let y = 0; y <= (this.workingArea?.y ?? 0); y++) {
-        const lines = this.lines.value.filter((line) => line.passesPoint(x, y));
-        if (lines.length > 1) {
-          pointsWithMoreLines.push({ x, y, lines });
-        }
-      }
-    }*/
-    // pointsWithMoreLines.forEach((point) => {
-    //
-    // });
   }
 
   private loadLines(input: string) {
