@@ -71,18 +71,6 @@ export class Day5Component implements OnInit, OnDestroy {
       requestAnimationFrame(drawLine);
     };
     drawLine();
-    // of(...lines)
-    //   .pipe(observeOn(animationFrameScheduler))
-    //   .subscribe((line) => {
-    //     if (this.ctx) {
-    //       line.draw(this.ctx, this.scale.value);
-    //     }
-    //   });
-    // lines.forEach((line) => {
-    //   if (this.ctx) {
-    //     line.draw(this.ctx, this.scale.value);
-    //   }
-    // });
   }
 
   loadExample() {

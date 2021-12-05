@@ -7,7 +7,12 @@ const routes: Routes = [
     path: '',
     component: Year2021Component,
     children: [
-      { path: '', redirectTo: '5', pathMatch: 'full' },
+      { path: '', redirectTo: '1', pathMatch: 'full' },
+      {
+        path: '1',
+        loadChildren: () =>
+          import('./day1/day1.module').then((m) => m.Day1Module),
+      },
       {
         path: '3',
         loadChildren: () =>
