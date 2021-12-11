@@ -23,6 +23,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./day5/day5.module').then((m) => m.Day5Module),
       },
+      {
+        path: '11',
+        loadChildren: () =>
+          import('./day11/day11.module').then((m) => m.Day11Module),
+      },
     ],
   },
 ];
