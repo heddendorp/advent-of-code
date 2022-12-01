@@ -5,7 +5,11 @@ module.exports = {
     extend: {},
   },
   variants: {
-    extend: {},
+    extend: {
+      boxShadow: {
+        glow: '0 0 5px 0 #ffff66',
+      },
+    },
   },
   plugins: [],
 };

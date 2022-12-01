@@ -12,6 +12,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./year2020/year2020.module').then((m) => m.Year2020Module),
   },
+  {
+    path: '2022',
+    loadChildren: () =>
+      import('./year2022/year2022.component').then((mod) => mod.routes),
+  },
 ];
 
 @NgModule({

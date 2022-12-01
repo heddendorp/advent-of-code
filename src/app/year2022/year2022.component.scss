@@ -1,0 +1,41 @@
+:host {
+  display: block;
+  min-height: calc(100vh - 80px);
+  width: 100%;
+  background-color: #26004d;
+  background-image: radial-gradient(
+      at 88% 61%,
+      hsla(287, 93%, 70%, 1) 0,
+      hsla(287, 93%, 70%, 0) 50%
+    ),
+    radial-gradient(
+      at 74% 83%,
+      hsla(205, 95%, 53%, 1) 0,
+      hsla(205, 95%, 53%, 0) 50%
+    ),
+    radial-gradient(
+      at 55% 42%,
+      hsla(94, 86%, 69%, 1) 0,
+      hsla(94, 86%, 69%, 0) 50%
+    ),
+    radial-gradient(
+      at 74% 38%,
+      hsla(304, 92%, 53%, 1) 0,
+      hsla(304, 92%, 53%, 0) 50%
+    ),
+    radial-gradient(
+      at 36% 19%,
+      hsla(208, 87%, 61%, 1) 0,
+      hsla(208, 87%, 61%, 0) 50%
+    ),
+    radial-gradient(
+      at 10% 52%,
+      hsla(184, 93%, 50%, 1) 0,
+      hsla(184, 93%, 50%, 0) 50%
+    ),
+    radial-gradient(
+      at 25% 25%,
+      hsla(137, 90%, 62%, 1) 0,
+      hsla(137, 90%, 62%, 0) 50%
+    );
+}

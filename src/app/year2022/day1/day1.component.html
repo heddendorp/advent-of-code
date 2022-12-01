@@ -1,0 +1,128 @@
+<h1 class="text-gray-50 font-bold text-4xl text-center font-mono mb-6">
+  --- Day 1: Calorie Counting ---
+</h1>
+
+<div
+  class="bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-2xl border backdrop-blur p-4"
+>
+  <h2 class="font-bold text-2xl mb-2">Problem 1</h2>
+  <p class="mb-2">
+    The elves have written down how many calories they are carrying, we need to
+    find the maximum amount carried by one elve
+  </p>
+  <button
+    (click)="loadFullRiddle()"
+    class="inline-block rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75"
+  >
+    <span
+      class="block rounded-full bg-gray-200 px-4 py-1 text-sm font-medium hover:bg-transparent"
+    >
+      Load full riddle
+    </span>
+  </button>
+</div>
+
+<div class="flex flex-row gap-2 items-start">
+  <div
+    class="bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-xl border p-2 max-h-[50vh] overflow-y-auto overflow-x-hidden"
+  >
+    <p class="whitespace-pre-line font-mono">{{ input$ | async }}</p>
+  </div>
+
+  <div
+    class="border-gray-100 border-opacity-50 rounded-xl border p-2 flex flex-col gap-2 max-h-[50vh] overflow-y-auto overflow-x-hidden"
+  >
+    <div
+      *ngFor="let elve of elves$ | async"
+      class="bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-lg border p-2"
+    >
+      <p class="whitespace-pre-line font-mono">{{ elve }}</p>
+    </div>
+  </div>
+
+  <div
+    class="border-gray-100 border-opacity-50 rounded-xl border p-2 flex flex-col gap-2 max-h-[50vh] overflow-y-auto overflow-x-hidden"
+  >
+    <div
+      *ngFor="let elve of perElve$ | async"
+      class="bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-lg border p-2"
+    >
+      <p class="whitespace-pre-line font-mono">{{ elve }}</p>
+    </div>
+  </div>
+
+  <div
+    class="bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-xl border p-2"
+  >
+    {{ maxCalories$ | async }}
+  </div>
+</div>
+
+<div
+  class="bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-2xl border backdrop-blur p-4"
+>
+  <h2 class="font-bold text-2xl mb-2">Problem 2</h2>
+  <p class="mb-2">
+    The elves have realized that these calories are not enough snack, so they
+    would like to know the sum of the top four elves that carry the most snacks
+  </p>
+  <button
+    (click)="loadFullRiddle()"
+    class="inline-block rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75"
+  >
+    <span
+      class="block rounded-full bg-gray-200 px-4 py-1 text-sm font-medium hover:bg-transparent"
+    >
+      Load full riddle
+    </span>
+  </button>
+</div>
+
+<div class="flex flex-row gap-2 items-start">
+  <div
+    class="bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-xl border p-2 max-h-[50vh] overflow-y-auto overflow-x-hidden"
+  >
+    <p class="whitespace-pre-line font-mono">{{ input$ | async }}</p>
+  </div>
+
+  <div
+    class="border-gray-100 border-opacity-50 rounded-xl border p-2 flex flex-col gap-2 max-h-[50vh] overflow-y-auto overflow-x-hidden"
+  >
+    <div
+      *ngFor="let elve of elves$ | async"
+      class="bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-lg border p-2"
+    >
+      <p class="whitespace-pre-line font-mono">{{ elve }}</p>
+    </div>
+  </div>
+
+  <div
+    class="border-gray-100 border-opacity-50 rounded-xl border p-2 flex flex-col gap-2 max-h-[50vh] overflow-y-auto overflow-x-hidden"
+  >
+    <div
+      *ngFor="let elve of perElve$ | async"
+      class="bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-lg border p-2"
+    >
+      <p class="whitespace-pre-line font-mono">{{ elve }}</p>
+    </div>
+  </div>
+
+  <div
+    class="border-gray-100 border-opacity-50 rounded-xl border p-2 flex flex-col gap-2 max-h-[50vh] overflow-y-auto overflow-x-hidden"
+  >
+    <div
+      *ngFor="let elve of sortedElves$ | async; let i = index"
+      class="bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-lg border p-2 shadow-amber-500 {{
+        i < 3 ? 'shadow-[0_0_8px] border-amber-500' : ''
+      }}"
+    >
+      <p class="whitespace-pre-line font-mono">{{ elve }}</p>
+    </div>
+  </div>
+
+  <div
+    class="bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-xl border p-2"
+  >
+    {{ topThreeSum$ | async }}
+  </div>
+</div>
