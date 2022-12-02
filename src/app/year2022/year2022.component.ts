@@ -28,6 +28,11 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./day1/day1.component').then((mod) => mod.Day1Component),
       },
+      {
+        path: '2',
+        loadComponent: () =>
+          import('./day2/day2.component').then((mod) => mod.Day2Component),
+      },
     ],
   },
 ];

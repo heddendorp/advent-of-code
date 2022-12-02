@@ -1,0 +1,270 @@
+<h1 class="text-gray-50 font-bold text-4xl text-center font-mono mb-6">
+  --- Day 2: Rock Paper Scissors ---
+</h1>
+
+<div
+  class="bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-2xl border backdrop-blur p-4"
+>
+  <h2 class="font-bold text-2xl mb-2">Problem 1</h2>
+  <p class="mb-2">
+    We have received a strategy guide from the elves that should help us with a
+    game of Rock Paper Scissors. As we are not sure if the guide is correct, we
+    have to calculate our score.
+  </p>
+  <button
+    (click)="loadFullRiddle()"
+    class="inline-block rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75"
+  >
+    <span
+      class="block rounded-full bg-gray-200 px-4 py-1 text-sm font-medium hover:bg-transparent"
+    >
+      Load full riddle
+    </span>
+  </button>
+</div>
+
+<div class="flex flex-row gap-2 items-start">
+  <div
+    class="bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-xl border overflow-hidden"
+  >
+    <div class="p-2 border-b border-gray-600 border-opacity-50">
+      <p>Our riddle input</p>
+    </div>
+    <div class="max-h-[50vh] overflow-y-auto overflow-x-hidden-hidden p-2">
+      <p class="whitespace-pre-line font-mono">{{ input$ | async }}</p>
+    </div>
+  </div>
+
+  <div
+    class="border-gray-100 overflow-hidden border-opacity-50 rounded-xl border"
+  >
+    <div
+      class="bg-gray-50 bg-opacity-60 p-2 border-b border-gray-600 border-opacity-50"
+    >
+      <p>Splitting into rounds</p>
+    </div>
+    <div
+      class="max-h-[50vh] overflow-y-auto overflow-x-hidden p-2 flex flex-col gap-2"
+    >
+      <p
+        class="whitespace-pre-line font-mono bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-lg border p-2"
+        *ngFor="let round of rounds$ | async"
+      >
+        {{ round }}
+      </p>
+    </div>
+  </div>
+
+  <div
+    class="border-gray-100 overflow-hidden border-opacity-50 rounded-xl border"
+  >
+    <div
+      class="bg-gray-50 bg-opacity-60 p-2 border-b border-gray-600 border-opacity-50"
+    >
+      <p>Decoding</p>
+    </div>
+    <div
+      class="max-h-[50vh] overflow-y-auto overflow-x-hidden p-2 flex flex-col gap-2"
+    >
+      <div
+        class="flex flex-row gap-2 whitespace-pre-line font-mono bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-lg border p-2"
+        *ngFor="let game of moves$ | async"
+      >
+        <ng-container *ngFor="let move of game">
+          <ng-container [ngSwitch]="move">
+            <svg-icon
+              *ngSwitchCase="'R'"
+              [svgStyle]="{ 'width.px': 24, 'height.px': 24 }"
+              src="/assets/icons/icons8-hand-rock.svg"
+            ></svg-icon>
+            <svg-icon
+              *ngSwitchCase="'P'"
+              [svgStyle]="{ 'width.px': 24, 'height.px': 24 }"
+              src="/assets/icons/icons8-hand.svg"
+            ></svg-icon>
+            <svg-icon
+              *ngSwitchCase="'S'"
+              [svgStyle]="{ 'width.px': 24, 'height.px': 24 }"
+              src="/assets/icons/icons8-hand-scissors.svg"
+            ></svg-icon>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="border-gray-100 overflow-hidden border-opacity-50 rounded-xl border"
+  >
+    <div
+      class="bg-gray-50 bg-opacity-60 p-2 border-b border-gray-600 border-opacity-50"
+    >
+      <p>Calculating score</p>
+    </div>
+    <div
+      class="max-h-[50vh] overflow-y-auto overflow-x-hidden p-2 flex flex-col gap-2"
+    >
+      <p
+        class="whitespace-pre-line font-mono bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-lg border p-2"
+        *ngFor="let score of scores$ | async"
+      >
+        {{ score }}
+      </p>
+    </div>
+  </div>
+
+  <div
+    class="bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-xl border"
+  >
+    <div class="p-2 border-b border-gray-600 border-opacity-50">
+      <p>Score sum</p>
+    </div>
+    <div class="overflow-y-auto overflow-x-hidden p-2">
+      <p class="whitespace-pre-line font-mono">{{ scoreSum$ | async }}</p>
+    </div>
+  </div>
+</div>
+
+<div
+  class="bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-2xl border backdrop-blur p-4"
+>
+  <h2 class="font-bold text-2xl mb-2">Problem 2</h2>
+  <p class="mb-2">
+    Now we know the correct interpretation of the strategy guide and have to
+    adjust our score.
+  </p>
+  <button
+    (click)="loadFullRiddle()"
+    class="inline-block rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75"
+  >
+    <span
+      class="block rounded-full bg-gray-200 px-4 py-1 text-sm font-medium hover:bg-transparent"
+    >
+      Load full riddle
+    </span>
+  </button>
+</div>
+
+<div class="flex flex-row gap-2 items-start">
+  <div
+    class="bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-xl border overflow-hidden"
+  >
+    <div class="p-2 border-b border-gray-600 border-opacity-50">
+      <p>Our riddle input</p>
+    </div>
+    <div class="max-h-[50vh] overflow-y-auto overflow-x-hidden p-2">
+      <p class="whitespace-pre-line font-mono">{{ input$ | async }}</p>
+    </div>
+  </div>
+
+  <div
+    class="border-gray-100 overflow-hidden border-opacity-50 rounded-xl border"
+  >
+    <div
+      class="bg-gray-50 bg-opacity-60 p-2 border-b border-gray-600 border-opacity-50"
+    >
+      <p>Splitting into rounds</p>
+    </div>
+    <div
+      class="max-h-[50vh] overflow-y-auto overflow-x-hidden p-2 flex flex-col gap-2"
+    >
+      <p
+        class="whitespace-pre-line font-mono bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-lg border p-2"
+        *ngFor="let round of rounds$ | async"
+      >
+        {{ round }}
+      </p>
+    </div>
+  </div>
+
+  <div
+    class="border-gray-100 overflow-hidden border-opacity-50 rounded-xl border"
+  >
+    <div
+      class="bg-gray-50 bg-opacity-60 p-2 border-b border-gray-600 border-opacity-50"
+    >
+      <p>Setting recommended move</p>
+    </div>
+    <div
+      class="max-h-[50vh] overflow-y-auto overflow-x-hidden p-2 flex flex-col gap-2"
+    >
+      <p
+        class="whitespace-pre-line font-mono bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-lg border p-2"
+        *ngFor="let round of recommendedRounds$ | async"
+      >
+        {{ round }}
+      </p>
+    </div>
+  </div>
+
+  <div
+    class="border-gray-100 overflow-hidden border-opacity-50 rounded-xl border"
+  >
+    <div
+      class="bg-gray-50 bg-opacity-60 p-2 border-b border-gray-600 border-opacity-50"
+    >
+      <p>Decoding</p>
+    </div>
+    <div
+      class="max-h-[50vh] overflow-y-auto overflow-x-hidden p-2 flex flex-col gap-2"
+    >
+      <div
+        class="flex flex-row gap-2 whitespace-pre-line font-mono bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-lg border p-2"
+        *ngFor="let game of recommendedMoves$ | async"
+      >
+        <ng-container *ngFor="let move of game">
+          <ng-container [ngSwitch]="move">
+            <svg-icon
+              *ngSwitchCase="'R'"
+              [svgStyle]="{ 'width.px': 24, 'height.px': 24 }"
+              src="/assets/icons/icons8-hand-rock.svg"
+            ></svg-icon>
+            <svg-icon
+              *ngSwitchCase="'P'"
+              [svgStyle]="{ 'width.px': 24, 'height.px': 24 }"
+              src="/assets/icons/icons8-hand.svg"
+            ></svg-icon>
+            <svg-icon
+              *ngSwitchCase="'S'"
+              [svgStyle]="{ 'width.px': 24, 'height.px': 24 }"
+              src="/assets/icons/icons8-hand-scissors.svg"
+            ></svg-icon>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="border-gray-100 overflow-hidden border-opacity-50 rounded-xl border"
+  >
+    <div
+      class="bg-gray-50 bg-opacity-60 p-2 border-b border-gray-600 border-opacity-50"
+    >
+      <p>Calculating score</p>
+    </div>
+    <div
+      class="max-h-[50vh] overflow-y-auto overflow-x-hidden p-2 flex flex-col gap-2"
+    >
+      <p
+        class="whitespace-pre-line font-mono bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-lg border p-2"
+        *ngFor="let score of recommendedScores$ | async"
+      >
+        {{ score }}
+      </p>
+    </div>
+  </div>
+
+  <div
+    class="bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-xl border"
+  >
+    <div class="p-2 border-b border-gray-600 border-opacity-50">
+      <p>Score sum</p>
+    </div>
+    <div class="overflow-y-auto overflow-x-hidden p-2">
+      <p class="whitespace-pre-line font-mono">
+        {{ recommendedScoreSum$ | async }}
+      </p>
+    </div>
+  </div>
+</div>
