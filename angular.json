@@ -73,10 +73,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "AdventOfCode:build:production"
+              "buildTarget": "AdventOfCode:build:production"
             },
             "development": {
-              "browserTarget": "AdventOfCode:build:development"
+              "buildTarget": "AdventOfCode:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "AdventOfCode:build"
+            "buildTarget": "AdventOfCode:build"
           }
         },
         "test": {
