@@ -6,29 +6,33 @@
     Our task today is to simulate a field of flashing fish.
   </p>
   <div class="flex lg:row lg:max-w-6xl lg:h-full">
-    <div *ngIf="currentStep | async as step">
+    @if (currentStep | async; as step) {
       <div>
-        <h3 class="font-bold mt-6 mb-2">Load positions</h3>
-        <p>We set up our riddle</p>
-        <div class="flex lg:row space-x-4">
-          <button (click)="loadExample()" class="button" type="button">
-            Load example
-          </button>
-          <button (click)="loadRiddle()" class="button" type="button">
-            Load full input
-          </button>
-        </div>
-        <div *ngIf="step >= 2">
-          <h3 class="font-bold mt-6 mb-2">Run flash simulation</h3>
-          <p>All places are increased each tick and flash at 9</p>
+        <div>
+          <h3 class="font-bold mt-6 mb-2">Load positions</h3>
+          <p>We set up our riddle</p>
           <div class="flex lg:row space-x-4">
-            <button (click)="startSimulation()" class="button" type="button">
-              Start Simulation
+            <button (click)="loadExample()" class="button" type="button">
+              Load example
+            </button>
+            <button (click)="loadRiddle()" class="button" type="button">
+              Load full input
             </button>
           </div>
+          @if (step >= 2) {
+            <div>
+              <h3 class="font-bold mt-6 mb-2">Run flash simulation</h3>
+              <p>All places are increased each tick and flash at 9</p>
+              <div class="flex lg:row space-x-4">
+                <button (click)="startSimulation()" class="button" type="button">
+                  Start Simulation
+                </button>
+              </div>
+            </div>
+          }
         </div>
       </div>
-    </div>
+    }
     <div class="p-4">
       <h3 class="font-bold mb-4">Visualisation of our steps</h3>
       <div>
@@ -41,7 +45,7 @@
         <div class="relative pt-1">
           <div
             class="overflow-hidden h-2 text-xs flex rounded bg-purple-200 w-full"
-          >
+            >
             <div
               [style.width]="(simProgress$ | async) + '%'"
               class="transition-all shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-purple-500"

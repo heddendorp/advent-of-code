@@ -4,51 +4,59 @@
   </h1>
   <p class="max-w-xl">The task is to map lines and find intersection points.</p>
   <div class="flex lg:row lg:max-w-6xl lg:h-full">
-    <div *ngIf="currentStep | async as step">
+    @if (currentStep | async; as step) {
       <div>
-        <h3 class="font-bold mt-6 mb-2">Load lines</h3>
-        <p>We draw all lines that we got from the input.</p>
-        <div class="flex lg:row space-x-4">
-          <button (click)="loadExample()" class="button" type="button">
-            Load example
-          </button>
-          <button (click)="loadRiddle()" class="button" type="button">
-            Load full input
-          </button>
-        </div>
-        <div *ngIf="step >= 2">
-          <h3 class="font-bold mt-6 mb-2">Remove vertical lines</h3>
-          <p>
-            Only look at non diagonal lines for now. You can skip this part to
-            answer the second part of the riddle
-          </p>
+        <div>
+          <h3 class="font-bold mt-6 mb-2">Load lines</h3>
+          <p>We draw all lines that we got from the input.</p>
           <div class="flex lg:row space-x-4">
-            <button (click)="removeDiagonals()" class="button" type="button">
-              Remove diagonal lines
+            <button (click)="loadExample()" class="button" type="button">
+              Load example
+            </button>
+            <button (click)="loadRiddle()" class="button" type="button">
+              Load full input
             </button>
           </div>
-        </div>
-        <div *ngIf="step >= 2">
-          <h3 class="font-bold mt-6 mb-2">Check overlap</h3>
-          <p>
-            Check at each point if there are two or more lines passing it and
-            count the points that have more lines
-          </p>
-          <div class="flex lg:row space-x-4">
-            <button (click)="checkOverlap()" class="button" type="button">
-              Check grid
-            </button>
-          </div>
-        </div>
-        <div *ngIf="step >= 4">
-          <h3 class="font-bold mt-6 mb-2">Result</h3>
-          <p>
-            There are {{ intersectionCount | async }} points with two or more
-            lines passing
-          </p>
+          @if (step >= 2) {
+            <div>
+              <h3 class="font-bold mt-6 mb-2">Remove vertical lines</h3>
+              <p>
+                Only look at non diagonal lines for now. You can skip this part to
+                answer the second part of the riddle
+              </p>
+              <div class="flex lg:row space-x-4">
+                <button (click)="removeDiagonals()" class="button" type="button">
+                  Remove diagonal lines
+                </button>
+              </div>
+            </div>
+          }
+          @if (step >= 2) {
+            <div>
+              <h3 class="font-bold mt-6 mb-2">Check overlap</h3>
+              <p>
+                Check at each point if there are two or more lines passing it and
+                count the points that have more lines
+              </p>
+              <div class="flex lg:row space-x-4">
+                <button (click)="checkOverlap()" class="button" type="button">
+                  Check grid
+                </button>
+              </div>
+            </div>
+          }
+          @if (step >= 4) {
+            <div>
+              <h3 class="font-bold mt-6 mb-2">Result</h3>
+              <p>
+                There are {{ intersectionCount | async }} points with two or more
+                lines passing
+              </p>
+            </div>
+          }
         </div>
       </div>
-    </div>
+    }
     <div class="flex-grow p-4">
       <h3 class="font-bold mb-4">Current state visualized</h3>
       <p class="my-2">To understand what's going on, try the example input</p>

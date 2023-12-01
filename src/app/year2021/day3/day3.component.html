@@ -17,73 +17,86 @@
     <p>Split into lines</p>
     <div class="flex flex-row">
       <div>
-        <pre *ngFor="let line of lines" class="data mb-1">{{ line }}</pre>
+        @for (line of lines; track line) {
+          <pre class="data mb-1">{{ line }}</pre>
+        }
       </div>
     </div>
     <p class="font-bold mt-8">Step 2</p>
     <p>Split into characters</p>
-    <div *ngFor="let line of characters" class="mb-1 flex flex-row">
-      <pre *ngFor="let char of line" class="data mr-1">{{ char }}</pre>
-    </div>
+    @for (line of characters; track line) {
+      <div class="mb-1 flex flex-row">
+        @for (char of line; track char) {
+          <pre class="data mr-1">{{ char }}</pre>
+        }
+      </div>
+    }
     <p class="font-bold mt-8">Step 3</p>
     <p>Check for the most common bit per column</p>
-    <div *ngFor="let line of characters" class="mb-1 flex flex-row">
-      <pre
-        *ngFor="let char of line"
-        class="text-gray-50 rounded-lg px-2 mr-4 {{
-          char === '0' ? 'bg-blue-800' : 'bg-pink-800'
-        }}"
-        >{{ char }}</pre
-      >
-    </div>
-    <div class="mt-4 flex flex-row">
-      <pre
-        *ngFor="let char of commonPerColumn"
-        class="text-gray-50 rounded-lg px-2 mr-4 {{
-          char === '0' ? 'bg-blue-800' : 'bg-pink-800'
-        }}"
-        >{{ char }}</pre
-      >
-    </div>
-    <p class="font-bold mt-8">Step 4</p>
-    <p>Convert and multiply our numbers</p>
-    <div class="mt-4 flex flex-row">
-      <pre
-        *ngFor="let char of commonPerColumn"
-        class="text-gray-50 rounded-lg px-2 {{
-          char === '0' ? 'bg-blue-800' : 'bg-pink-800'
-        }}"
-        >{{ char }}</pre
-      >
-      <pre class="data ml-1">=</pre>
-      <pre class="data ml-1">{{ correctNumber1 }}</pre>
-    </div>
-    <div class="mt-4 flex flex-row">
-      <pre
-        *ngFor="let char of commonPerColumn"
-        class="text-gray-50 rounded-lg px-2 {{
-          char === '1' ? 'bg-blue-800' : 'bg-pink-800'
-        }}"
-        >{{ char === '0' ? '1' : '0' }}</pre
-      >
-      <pre class="data ml-1">=</pre>
-      <pre class="data ml-1">{{ correctNumber2 }}</pre>
-    </div>
-    <div class="mt-4 flex flex-row">
-      <pre class="data">{{ correctNumber1 }}</pre>
-      <pre class="data ml-1">*</pre>
-      <pre class="data ml-1">{{ correctNumber2 }}</pre>
-      <pre class="data ml-1">=</pre>
-      <pre class="data ml-1">{{ correctNumber1 * correctNumber2 }}</pre>
-    </div>
-    <p class="font-bold mt-8">Solution</p>
-    <div class="mt-4 flex flex-row">
-      <p>For the example:</p>
-      <pre class="data ml-1">{{ correctNumber1 * correctNumber2 }}</pre>
-    </div>
-    <div class="mt-4 flex flex-row">
-      <p>For the my input:</p>
-      <pre class="data ml-1">{{ solution }}</pre>
-    </div>
-  </div>
-</main>
+    @for (line of characters; track line) {
+      <div class="mb-1 flex flex-row">
+        @for (char of line; track char) {
+          <pre
+            class="text-gray-50 rounded-lg px-2 mr-4 {{
+            char === '0' ? 'bg-blue-800' : 'bg-pink-800'
+            }}"
+            >{{ char }}</pre
+            >
+          }
+        </div>
+      }
+      <div class="mt-4 flex flex-row">
+        @for (char of commonPerColumn; track char) {
+          <pre
+            class="text-gray-50 rounded-lg px-2 mr-4 {{
+            char === '0' ? 'bg-blue-800' : 'bg-pink-800'
+            }}"
+            >{{ char }}</pre
+            >
+          }
+        </div>
+        <p class="font-bold mt-8">Step 4</p>
+        <p>Convert and multiply our numbers</p>
+        <div class="mt-4 flex flex-row">
+          @for (char of commonPerColumn; track char) {
+            <pre
+              class="text-gray-50 rounded-lg px-2 {{
+              char === '0' ? 'bg-blue-800' : 'bg-pink-800'
+              }}"
+              >{{ char }}</pre
+              >
+            }
+            <pre class="data ml-1">=</pre>
+            <pre class="data ml-1">{{ correctNumber1 }}</pre>
+          </div>
+          <div class="mt-4 flex flex-row">
+            @for (char of commonPerColumn; track char) {
+              <pre
+                class="text-gray-50 rounded-lg px-2 {{
+                char === '1' ? 'bg-blue-800' : 'bg-pink-800'
+                }}"
+                >{{ char === '0' ? '1' : '0' }}</pre
+                >
+              }
+              <pre class="data ml-1">=</pre>
+              <pre class="data ml-1">{{ correctNumber2 }}</pre>
+            </div>
+            <div class="mt-4 flex flex-row">
+              <pre class="data">{{ correctNumber1 }}</pre>
+              <pre class="data ml-1">*</pre>
+              <pre class="data ml-1">{{ correctNumber2 }}</pre>
+              <pre class="data ml-1">=</pre>
+              <pre class="data ml-1">{{ correctNumber1 * correctNumber2 }}</pre>
+            </div>
+            <p class="font-bold mt-8">Solution</p>
+            <div class="mt-4 flex flex-row">
+              <p>For the example:</p>
+              <pre class="data ml-1">{{ correctNumber1 * correctNumber2 }}</pre>
+            </div>
+            <div class="mt-4 flex flex-row">
+              <p>For the my input:</p>
+              <pre class="data ml-1">{{ solution }}</pre>
+            </div>
+          </div>
+        </main>
+        

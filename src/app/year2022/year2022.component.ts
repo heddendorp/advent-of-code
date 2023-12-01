@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import {
   RouterLink,
   RouterLinkActive,
@@ -10,7 +10,7 @@ import {
 @Component({
   selector: 'app-year2022',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterOutlet, RouterLinkActive],
+  imports: [RouterLink, RouterOutlet, RouterLinkActive],
   templateUrl: './year2022.component.html',
   styleUrls: ['./year2022.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
