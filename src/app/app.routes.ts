@@ -1,19 +1,15 @@
 import { Routes } from '@angular/router';
+import { ROUTES_2022 } from './year-2022/routes';
+import { ROUTES_2024 } from './year2024/routes';
+import { ROUTES_2021 } from './year-2021/routes';
+import { ROUTES_2020 } from './year2020/routes';
+import { ROUTES_2018 } from './year-2018/routes';
 
 export const routes: Routes = [
-  {
-    path: '2021',
-    loadChildren: () =>
-      import('./year2021/year2021.module').then((m) => m.Year2021Module),
-  },
-  {
-    path: '2020',
-    loadChildren: () =>
-      import('./year2020/year2020.module').then((m) => m.Year2020Module),
-  },
-  {
-    path: '2022',
-    loadChildren: () =>
-      import('./year2022/year2022.component').then((mod) => mod.routes),
-  },
+  { path: '', pathMatch: 'full', redirectTo: '2024' },
+  { path: '2018', children: ROUTES_2018 },
+  { path: '2020', children: ROUTES_2020 },
+  { path: '2021', children: ROUTES_2021 },
+  { path: '2022', children: ROUTES_2022 },
+  { path: '2024', children: ROUTES_2024 },
 ];

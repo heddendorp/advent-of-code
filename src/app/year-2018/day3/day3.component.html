@@ -1,0 +1,42 @@
+<h2>Day 3</h2>
+Look at the
+<a href="https://adventofcode.com/2018/day/3">original challenge</a> <br />
+enter your challenge input here, I've added the demo to get started.
+<textarea
+  placeholder="Your challenge input"
+  [formControl]="challengeCtrl"
+></textarea>
+
+<button (click)="loadChallenge()" [disabled]="working">
+  Load actual challenge
+</button>
+
+<button
+  (click)="startAlgorithm()"
+  [disabled]="challengeCtrl.invalid || working"
+>
+  Start solution
+</button>
+
+<div class="flex gap-4">
+  <div class="mat-typography h-400px flex flex-col">
+    @if (currentStep >= 1) {
+      <p>Step 1 - set up the grid of data we got</p>
+    }
+    @if (currentStep >= 2) {
+      <p>Step 2 - draw in the areas</p>
+    }
+    @if (currentStep >= 3) {
+      <p>Step 3 - calculate claims for every point on the grid</p>
+    }
+    @if (currentStep >= 4) {
+      <p>Step 4 - draw in interceptions</p>
+    }
+    @if (currentStep >= 5) {
+      <p>Done - We have found {{ result }} interceptions</p>
+    }
+  </div>
+  <div class="flex-auto">
+    <canvas style="width: 100%; height: 100%" #canvas></canvas>
+  </div>
+</div>

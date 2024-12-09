@@ -1,0 +1,9 @@
+@import 'tailwindcss/theme' theme(reference);
+
+:host {
+  @apply block;
+}
+
+.data {
+  @apply rounded-lg bg-gray-800 px-2 text-gray-50 dark:bg-gray-200 dark:text-gray-900;
+}

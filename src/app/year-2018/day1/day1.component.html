@@ -1,0 +1,53 @@
+<h2>Day 1</h2>
+Look at the
+<a href="https://adventofcode.com/2018/day/1">original challenge</a> <br />
+enter your challenge input here, I've added the demo to get started.
+<textarea
+  placeholder="Your challenge input"
+  [formControl]="challengeCtrl"
+></textarea>
+
+<button (click)="loadChallenge()" [disabled]="working">
+  Load actual challenge
+</button>
+
+<button
+  (click)="startAlgorithm()"
+  [disabled]="challengeCtrl.invalid || working"
+>
+  Start solution
+</button>
+
+<div class="flex flex-col">
+  @if (currentStep >= 1) {
+    <p>Start - parse input</p>
+  }
+  @if (currentStep >= 2) {
+    <p>Working - apply every operation</p>
+  }
+  @if (currentStep >= 3) {
+    <p>Done - All operations applied, final result ready</p>
+  }
+  <h1 class="mat-display-2">
+    Current Frequency: {{ currentRes > 0 ? '+' : '' }}{{ currentRes }}
+  </h1>
+  <div class="op-list flex gap-2">
+    @for (op of ops | async; track op) {
+      <span class="op">{{ op > 0 ? '+' : '' }}{{ op }}</span>
+    }
+  </div>
+  @if (currentStep >= 3) {
+    <p>
+      Ready for the next challenge?
+      <button [disabled]="working2" (click)="continueAlgorithm()">
+        Get started
+      </button>
+    </p>
+  }
+  @if (currentStep >= 4) {
+    <p>Working - Apply operations until frequency repeats</p>
+  }
+  @if (currentStep >= 5) {
+    <p>Done - Double detected, application stopped</p>
+  }
+</div>

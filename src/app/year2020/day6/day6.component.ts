@@ -3,10 +3,10 @@ import data from './data.json';
 import { flatten, intersection, uniq } from 'lodash-es';
 
 @Component({
-  selector: 'app-day6',
-  templateUrl: './day6.component.html',
-  styleUrls: ['./day6.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-day6',
+    templateUrl: './day6.component.html',
+    styleUrls: ['./day6.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Day6Component {
   steps1: { data: string[]; operation: string }[] = [];

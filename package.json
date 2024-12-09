@@ -1,5 +1,5 @@
 {
-  "name": "advent-of-code",
+  "name": "aoc-ng-19",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,48 +7,54 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:advent-of-code": "node dist/advent-of-code/server/server.mjs",
-    "format": "prettier --write ."
+    "serve:ssr:aoc-ng-19": "node dist/aoc-ng-19/server/server.mjs",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^17.0.0",
-    "@angular/common": "^17.0.0",
-    "@angular/compiler": "^17.0.0",
-    "@angular/core": "^17.0.0",
-    "@angular/forms": "^17.0.0",
-    "@angular/platform-browser": "^17.0.0",
-    "@angular/platform-browser-dynamic": "^17.0.0",
-    "@angular/platform-server": "^17.0.0",
-    "@angular/router": "^17.0.0",
-    "@angular/ssr": "^17.0.3",
-    "angular-svg-icon": "^17.0.0",
+    "@angular/animations": "^19.0.0",
+    "@angular/common": "^19.0.0",
+    "@angular/compiler": "^19.0.0",
+    "@angular/core": "^19.0.0",
+    "@angular/forms": "^19.0.0",
+    "@angular/platform-browser": "^19.0.0",
+    "@angular/platform-browser-dynamic": "^19.0.0",
+    "@angular/platform-server": "^19.0.0",
+    "@angular/router": "^19.0.0",
+    "@angular/ssr": "^19.0.4",
+    "@tailwindcss/postcss": "^4.0.0-beta.6",
     "express": "^4.18.2",
     "lodash-es": "^4.17.21",
+    "motion": "^11.13.1",
     "rxjs": "~7.8.0",
+    "tailwindcss": "^4.0.0-beta.6",
     "tslib": "^2.3.0",
-    "zone.js": "~0.14.2"
+    "zone.js": "~0.15.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^17.0.3",
-    "@angular/cli": "^17.0.3",
-    "@angular/compiler-cli": "^17.0.0",
+    "@angular-devkit/build-angular": "^19.0.4",
+    "@angular/cli": "^19.0.4",
+    "@angular/compiler-cli": "^19.0.0",
     "@types/express": "^4.17.17",
     "@types/jasmine": "~5.1.0",
     "@types/lodash-es": "^4.17.12",
     "@types/node": "^18.18.0",
-    "autoprefixer": "^10.4.16",
-    "jasmine-core": "~5.1.0",
+    "angular-eslint": "19.0.1",
+    "eslint": "^9.16.0",
+    "eslint-config-prettier": "^9.1.0",
+    "jasmine-core": "~5.4.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "postcss": "^8.4.32",
-    "prettier": "^3.1.0",
-    "prettier-plugin-tailwindcss": "^0.5.7",
-    "tailwindcss": "^3.3.5",
-    "typescript": "~5.2.2"
+    "prettier": "3.4.2",
+    "prettier-plugin-tailwindcss": "^0.6.9",
+    "typescript": "~5.6.2",
+    "typescript-eslint": "8.17.0"
   },
-  "packageManager": "yarn@4.0.2"
+  "volta": {
+    "node": "22.12.0",
+    "yarn": "4.5.3"
+  }
 }

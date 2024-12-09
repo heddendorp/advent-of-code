@@ -1,3 +1,4 @@
+@import 'tailwindcss/theme' theme(reference);
 :host {
   @apply block p-4;
 }

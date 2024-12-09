@@ -2,10 +2,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import data from './data.json';
 
 @Component({
-  selector: 'app-day1',
-  templateUrl: './day1.component.html',
-  styleUrls: ['./day1.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-day1',
+    templateUrl: './day1.component.html',
+    styleUrls: ['./day1.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Day1Component {
   steps1: { data: any[]; operation: string }[] = [];

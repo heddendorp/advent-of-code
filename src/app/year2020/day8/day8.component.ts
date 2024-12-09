@@ -9,11 +9,13 @@ import {
   withLatestFrom,
 } from 'rxjs';
 import data from './data.json';
+import { NgClass, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-day8',
-  templateUrl: './day8.component.html',
-  styleUrls: ['./day8.component.scss'],
+    selector: 'app-day8',
+    templateUrl: './day8.component.html',
+    styleUrls: ['./day8.component.scss'],
+    imports: [NgClass, AsyncPipe]
 })
 export class Day8Component {
   public state$ = new BehaviorSubject<{

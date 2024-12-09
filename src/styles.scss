@@ -1,8 +1,2 @@
 /* You can add global styles to this file, and also import other style files */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-button.button {
-  @apply w-full flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700;
-}
+@import "tailwindcss";

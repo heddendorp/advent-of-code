@@ -1,55 +1,62 @@
 <menu
-  class="bg-gray-800 p-4 text-white flex flex-row text-2xl space-x-4 items-center"
+  class="flex flex-row items-center space-x-4 bg-gray-800 p-4 text-2xl text-white"
 >
   <li class="mr-4" routerLink="/">
     <img
       alt="⭐"
       class="h-9"
-      ngSrc="./assets/images/star.svg"
+      ngSrc="./images/star.svg"
       height="96"
       width="96"
     />
   </li>
   <li class="mr-8" routerLink="/">Advent of code</li>
+  <!--  <li>-->
+  <!--    <a-->
+  <!--      class="group relative inline-block text-sm font-medium text-white focus:outline-none focus:ring"-->
+  <!--      routerLink="2023"-->
+  <!--    >-->
+  <!--      <span class="absolute inset-0 border border-teal-600 group-active:border-teal-500"></span>-->
+  <!--      <span-->
+  <!--        class="block border border-teal-600 bg-teal-600 px-12 py-3 transition-transform active:border-teal-500 active:bg-teal-500 group-hover:-translate-x-1 group-hover:-translate-y-1"-->
+  <!--      >-->
+  <!--    2023-->
+  <!--  </span>-->
+  <!--    </a>-->
+  <!--  </li>-->
   <li>
     <a
-      class="group relative inline-block text-sm font-medium text-white focus:outline-none focus:ring"
-      routerLink="2023"
-    >
-      <span class="absolute inset-0 border border-teal-600 group-active:border-teal-500"></span>
-      <span
-        class="block border border-teal-600 bg-teal-600 px-12 py-3 transition-transform active:border-teal-500 active:bg-teal-500 group-hover:-translate-x-1 group-hover:-translate-y-1"
-      >
-    2023
-  </span>
-    </a>
-  </li>
-  <li>
-    <a
-      class="inline-block rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75"
+      class="active:text-opacity-75 inline-block rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-[2px] hover:text-white focus:ring focus:outline-none"
       routerLink="2022"
     >
       <span
         class="block rounded-full bg-gray-800 px-8 py-3 text-sm font-medium hover:bg-transparent"
-        routerLinkActive="bg-opacity-80"
+        routerLinkActive="bg-gray-800/80"
       >
         2022
       </span>
     </a>
   </li>
   <li
-    class="hover:border-gray-400 cursor-pointer rounded-full bg-gray-600 border border-solid border-transparent border-2 px-4"
+    class="cursor-pointer rounded-full border border-2 border-solid border-transparent bg-gray-600 px-4 hover:border-gray-400"
     routerLink="2021"
     routerLinkActive="border-gray-200"
   >
     2021
   </li>
   <li
-    class="hover:border-gray-400 cursor-pointer rounded bg-gray-500 border border-solid border-transparent px-2"
+    class="cursor-pointer rounded border border-solid border-transparent bg-gray-500 px-2 hover:border-gray-400"
     routerLink="2020"
     routerLinkActive="border-gray-200"
   >
     2020
+  </li>
+  <li
+    class="cursor-pointer border border-solid border-gray-500 px-2 font-mono hover:border-gray-400"
+    routerLink="2018"
+    routerLinkActive="border-gray-200"
+  >
+    2018
   </li>
 </menu>
 <router-outlet></router-outlet>

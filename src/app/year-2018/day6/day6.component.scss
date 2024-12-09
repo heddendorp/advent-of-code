@@ -1,0 +1,19 @@
+:host {
+  display: block;
+}
+
+.datagrid {
+  font-family: monospace;
+}
+
+.isIgnored {
+  color: grey;
+}
+
+.isDiscarded {
+  color: red;
+}
+
+.isSolution {
+  color: green;
+}
