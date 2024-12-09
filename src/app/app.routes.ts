@@ -6,7 +6,12 @@ import { ROUTES_2020 } from './year2020/routes';
 import { ROUTES_2018 } from './year-2018/routes';
 
 export const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '2024' },
+  {
+    path: '',
+    pathMatch: 'full',
+    loadComponent: () =>
+      import('./empty/empty.component').then((m) => m.EmptyComponent),
+  },
   { path: '2018', children: ROUTES_2018 },
   { path: '2020', children: ROUTES_2020 },
   { path: '2021', children: ROUTES_2021 },
