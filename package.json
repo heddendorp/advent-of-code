@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --deploy-url advent-of-code",
+    "build": "ng build --deploy-url advent-of-code/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:aoc-ng-19": "node dist/aoc-ng-19/server/server.mjs",
