@@ -38,7 +38,9 @@ export class Day10Component {
             .forEach((char, x) => {
               const height = Number(char);
               const geometry = new THREE.BoxGeometry(1, height, 1);
-              const material = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
+              const material = new THREE.MeshPhongMaterial({
+                color: '#a8a29e',
+              });
               const cube = new THREE.Mesh(geometry, material);
               cube.position.x = x;
               cube.position.y = height / 2;
