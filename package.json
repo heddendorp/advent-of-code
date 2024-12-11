@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --deploy-url advent-of-code/",
+    "build": "ng build --base-href advent-of-code/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:aoc-ng-19": "node dist/aoc-ng-19/server/server.mjs",
@@ -28,6 +28,7 @@
     "motion": "^11.13.1",
     "rxjs": "~7.8.0",
     "tailwindcss": "^4.0.0-beta.6",
+    "three": "^0.171.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
   },
@@ -39,6 +40,7 @@
     "@types/jasmine": "~5.1.0",
     "@types/lodash-es": "^4.17.12",
     "@types/node": "^18.18.0",
+    "@types/three": "^0.170.0",
     "angular-eslint": "19.0.1",
     "eslint": "^9.16.0",
     "eslint-config-prettier": "^9.1.0",

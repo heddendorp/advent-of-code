@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 import { ROUTES_2022 } from './year-2022/routes';
-import { ROUTES_2024 } from './year2024/routes';
+import { ROUTES_2024 } from './year-2024/routes';
 import { ROUTES_2021 } from './year-2021/routes';
-import { ROUTES_2020 } from './year2020/routes';
+import { ROUTES_2020 } from './year-2020/routes';
 import { ROUTES_2018 } from './year-2018/routes';
 
 export const routes: Routes = [
