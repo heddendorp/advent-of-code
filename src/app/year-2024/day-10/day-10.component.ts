@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import * as THREE from 'three';
 import { puzzleInput } from './data';
+import { Line } from 'three';
 
 @Component({
   selector: 'app-day-10',
@@ -16,7 +17,7 @@ import { puzzleInput } from './data';
 export class Day10Component {
   protected canvas = viewChild<ElementRef<HTMLCanvasElement>>('canvas');
   constructor() {
-    afterNextRender(() => {
+    afterNextRender(async () => {
       const canvasElement = this.canvas()?.nativeElement;
       if (!canvasElement) {
         return;
@@ -80,8 +81,155 @@ export class Day10Component {
 
       function animate() {
         renderer.render(scene, camera);
+        requestAnimationFrame(animate);
       }
-      renderer.setAnimationLoop(animate);
+      requestAnimationFrame(animate);
+
+      let finalResult = 0;
+      let finalResult2 = 0;
+
+      const puzzle = puzzleInput
+        .trim()
+        .split('\n')
+        .map((line) => line.trim().split(''));
+      for (const [y, line] of puzzle.entries()) {
+        for (const [x, point] of line.entries()) {
+          const height = Number(point);
+          if (height === 0) {
+            const greenBall = new THREE.Mesh(
+              new THREE.SphereGeometry(0.5, 32, 32),
+              new THREE.MeshPhongMaterial({ color: '#00ff00' }),
+            );
+            greenBall.position.x = x;
+            greenBall.position.y = 0.5;
+            greenBall.position.z = y;
+            scene.add(greenBall);
+            const material = new THREE.LineBasicMaterial({
+              color: 0x0000ff,
+            });
+            async function checkStep(
+              x: number,
+              y: number,
+              linesToHere: Line[] = [],
+            ): Promise<string[]> {
+              const currentHeight = Number(puzzle[y][x]);
+              if (currentHeight === 9) {
+                linesToHere.forEach((line) => {
+                  line.material = new THREE.LineBasicMaterial({
+                    color: 0xffd700,
+                  });
+                  line.userData['gold'] = true;
+                });
+                return [`[${x},${y}]`];
+              }
+              let result = [];
+              for (let i = 0; i < 4; i++) {
+                switch (i) {
+                  case 0:
+                    if (x + 1 >= puzzleWidth) {
+                      break;
+                    }
+                    if (Number(puzzle[y][x + 1]) === currentHeight + 1) {
+                      const points = [];
+                      points.push(new THREE.Vector3(x, currentHeight + 0.5, y));
+                      points.push(
+                        new THREE.Vector3(x + 1, currentHeight + 1.5, y),
+                      );
+                      const geometry = new THREE.BufferGeometry().setFromPoints(
+                        points,
+                      );
+                      const line = new THREE.Line(geometry, material);
+                      scene.add(line);
+                      result.push(
+                        ...(await checkStep(x + 1, y, [...linesToHere, line])),
+                      );
+                    }
+                    break;
+                  case 1:
+                    if (x - 1 < 0) {
+                      break;
+                    }
+                    if (Number(puzzle[y][x - 1]) === currentHeight + 1) {
+                      const points = [];
+                      points.push(new THREE.Vector3(x, currentHeight + 0.5, y));
+                      points.push(
+                        new THREE.Vector3(x - 1, currentHeight + 1.5, y),
+                      );
+                      const geometry = new THREE.BufferGeometry().setFromPoints(
+                        points,
+                      );
+                      const line = new THREE.Line(geometry, material);
+                      scene.add(line);
+                      result.push(
+                        ...(await checkStep(x - 1, y, [...linesToHere, line])),
+                      );
+                    }
+                    break;
+                  case 2:
+                    if (y + 1 >= puzzleHeight) {
+                      break;
+                    }
+                    if (Number(puzzle[y + 1][x]) === currentHeight + 1) {
+                      const points = [];
+                      points.push(new THREE.Vector3(x, currentHeight + 0.5, y));
+                      points.push(
+                        new THREE.Vector3(x, currentHeight + 1.5, y + 1),
+                      );
+                      const geometry = new THREE.BufferGeometry().setFromPoints(
+                        points,
+                      );
+                      const line = new THREE.Line(geometry, material);
+                      scene.add(line);
+                      result.push(
+                        ...(await checkStep(x, y + 1, [...linesToHere, line])),
+                      );
+                    }
+                    break;
+                  case 3:
+                    if (y - 1 < 0) {
+                      break;
+                    }
+                    if (Number(puzzle[y - 1][x]) === currentHeight + 1) {
+                      const points = [];
+                      points.push(new THREE.Vector3(x, currentHeight + 0.5, y));
+                      points.push(
+                        new THREE.Vector3(x, currentHeight + 1.5, y - 1),
+                      );
+                      const geometry = new THREE.BufferGeometry().setFromPoints(
+                        points,
+                      );
+                      const line = new THREE.Line(geometry, material);
+                      scene.add(line);
+                      result.push(
+                        ...(await checkStep(x, y - 1, [...linesToHere, line])),
+                      );
+                    }
+                    break;
+                }
+              }
+              await new Promise((resolve) => setTimeout(resolve, 10));
+              return result;
+            }
+            const result = await checkStep(x, y);
+            // remove blue lines
+            scene.children.forEach((child) => {
+              // @ts-ignore
+              if (!child.userData['gold'] && child.type === 'Line') {
+                scene.remove(child);
+              }
+            });
+            const uniqueResult = Array.from(new Set(result));
+            console.log(uniqueResult);
+            finalResult += uniqueResult.length;
+            finalResult2 += result.length;
+
+            // await new Promise((resolve) => setTimeout(resolve, 100));
+          }
+        }
+        camera.lookAt(puzzleWidth / 2, 0, y);
+        camera.position.z = y - 3;
+      }
+      alert(`Result 1: ${finalResult}\nResult 2: ${finalResult2}`);
     });
   }
 }
