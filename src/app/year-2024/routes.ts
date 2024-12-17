@@ -12,6 +12,11 @@ export const ROUTES_2024: Routes = [
         loadComponent: () =>
           import('./day-10/day-10.component').then((m) => m.Day10Component),
       },
+      {
+        path: '11',
+        loadComponent: () =>
+          import('./day-11/day-11.component').then((m) => m.Day11Component),
+      },
     ],
   },
 ];

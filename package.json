@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:aoc-ng-19": "node dist/aoc-ng-19/server/server.mjs",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "format": "prettier --write \"src/**\""
   },
   "private": true,
   "dependencies": {
@@ -22,6 +23,7 @@
     "@angular/platform-server": "^19.0.0",
     "@angular/router": "^19.0.0",
     "@angular/ssr": "^19.0.4",
+    "@dimforge/rapier3d": "^0.14.0",
     "@tailwindcss/postcss": "^4.0.0-beta.6",
     "express": "^4.18.2",
     "lodash-es": "^4.17.21",

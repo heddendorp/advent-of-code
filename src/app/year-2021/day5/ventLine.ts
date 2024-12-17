@@ -9,7 +9,7 @@ export class VentLine {
 
   constructor(public segment: string) {
     const [x1, y1, x2, y2] = flatten(
-      segment.split(' -> ').map((coords) => coords.split(','))
+      segment.split(' -> ').map((coords) => coords.split(',')),
     ).map(Number);
     this.x1 = x1;
     this.y1 = y1;

@@ -2,6 +2,7 @@ import {
   afterNextRender,
   Component,
   ElementRef,
+  OnDestroy,
   viewChild,
 } from '@angular/core';
 import * as THREE from 'three';
@@ -14,8 +15,9 @@ import { Line } from 'three';
   templateUrl: './day-10.component.html',
   styles: ``,
 })
-export class Day10Component {
+export class Day10Component implements OnDestroy {
   protected canvas = viewChild<ElementRef<HTMLCanvasElement>>('canvas');
+  private active = true;
   constructor() {
     afterNextRender(async () => {
       const canvasElement = this.canvas()?.nativeElement;
@@ -40,7 +42,7 @@ export class Day10Component {
               const height = Number(char);
               const geometry = new THREE.BoxGeometry(1, height, 1);
               const material = new THREE.MeshPhongMaterial({
-                color: '#a8a29e',
+                color: new THREE.Color('#57534e').offsetHSL(0, 0, height * 0.1),
               });
               const cube = new THREE.Mesh(geometry, material);
               cube.position.x = x;
@@ -79,10 +81,13 @@ export class Day10Component {
       camera.position.x = puzzleWidth / 2;
       camera.lookAt(puzzleWidth / 2, 0, puzzleHeight / 2);
 
-      function animate() {
+      const animate = () => {
         renderer.render(scene, camera);
+        if (!this.active) {
+          return;
+        }
         requestAnimationFrame(animate);
-      }
+      };
       requestAnimationFrame(animate);
 
       let finalResult = 0;
@@ -94,18 +99,21 @@ export class Day10Component {
         .map((line) => line.trim().split(''));
       for (const [y, line] of puzzle.entries()) {
         for (const [x, point] of line.entries()) {
+          if (!this.active) {
+            return;
+          }
           const height = Number(point);
           if (height === 0) {
             const greenBall = new THREE.Mesh(
-              new THREE.SphereGeometry(0.5, 32, 32),
-              new THREE.MeshPhongMaterial({ color: '#00ff00' }),
+              new THREE.SphereGeometry(0.25, 32, 32),
+              new THREE.MeshPhongMaterial({ color: '#86efac' }),
             );
             greenBall.position.x = x;
             greenBall.position.y = 0.5;
             greenBall.position.z = y;
             scene.add(greenBall);
             const material = new THREE.LineBasicMaterial({
-              color: 0x0000ff,
+              color: '#3b82f6',
             });
             async function checkStep(
               x: number,
@@ -231,5 +239,9 @@ export class Day10Component {
       }
       alert(`Result 1: ${finalResult}\nResult 2: ${finalResult2}`);
     });
+  }
+
+  ngOnDestroy(): void {
+    this.active = false;
   }
 }

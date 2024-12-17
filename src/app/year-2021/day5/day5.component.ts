@@ -13,11 +13,11 @@ import { chunk } from 'lodash-es';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
-    selector: 'app-day5',
-    templateUrl: './day5.component.html',
-    styleUrls: ['./day5.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [AsyncPipe]
+  selector: 'app-day5',
+  templateUrl: './day5.component.html',
+  styleUrls: ['./day5.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [AsyncPipe],
 })
 export class Day5Component implements OnInit, OnDestroy {
   @ViewChild('canvas', { static: true })
@@ -54,7 +54,7 @@ export class Day5Component implements OnInit, OnDestroy {
       0,
       0,
       this.canvas.nativeElement.clientWidth,
-      this.canvas.nativeElement.clientHeight
+      this.canvas.nativeElement.clientHeight,
     );
     const lineIterator = chunk(lines, Math.max(lines.length / 60, 1))[
       Symbol.iterator
@@ -123,7 +123,7 @@ export class Day5Component implements OnInit, OnDestroy {
                 x * this.scale.value - (this.scale.value > 1 ? 2 : 0.5),
                 y * this.scale.value - (this.scale.value > 1 ? 2 : 0.5),
                 this.scale.value > 1 ? 4 : 1,
-                this.scale.value > 1 ? 4 : 1
+                this.scale.value > 1 ? 4 : 1,
               );
               this.ctx.fill();
             }

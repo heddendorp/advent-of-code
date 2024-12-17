@@ -1,6 +1,6 @@
 <h1
-  class="text-6xl font-black font-mono text-center my-6 text-transparent bg-clip-text bg-gradient-to-tr from-pink-400 to-pink-600"
-  >
+  class="my-6 bg-gradient-to-tr from-pink-400 to-pink-600 bg-clip-text text-center font-mono text-6xl font-black text-transparent"
+>
   --- Day 1: Report Repair ---
 </h1>
 <!--<a
@@ -10,35 +10,34 @@ class="bg-blue-100 border-blue-800 border-2 border-solid rounded-lg p-2"
 >Problem statement</a
 >-->
 <div
-  class="rounded-2xl p-4 space-y-2 bg-gradient-to-tr from-blue-700 to-blue-900"
-  >
+  class="space-y-2 rounded-2xl bg-gradient-to-tr from-blue-700 to-blue-900 p-4"
+>
   <div class="mb-8">
-    <h2 class="font-bold text-5xl text-blue-200 mb-4">Part 1</h2>
-    <h3 class="text-gray-100 font-bold text-5xl">Build 2020 with 2 entries</h3>
+    <h2 class="mb-4 text-5xl font-bold text-blue-200">Part 1</h2>
+    <h3 class="text-5xl font-bold text-gray-100">Build 2020 with 2 entries</h3>
   </div>
-  <div class="flex flex-row font-mono space-x-4 items-stretch">
+  <div class="flex flex-row items-stretch space-x-4 font-mono">
     @for (step of steps1; track step) {
-      <div class="flex flex-col space-y-2 justify-center">
+      <div class="flex flex-col justify-center space-y-2">
         <span
-          class="bg-gray-300 bg-opacity-70 px-2 rounded text-2xl whitespace-pre-wrap"
-          >
+          class="bg-opacity-70 rounded bg-gray-300 px-2 text-2xl whitespace-pre-wrap"
+        >
           {{ step.operation }}
         </span>
       </div>
-      <div class="flex flex-col space-y-2 justify-between">
+      <div class="flex flex-col justify-between space-y-2">
         @for (text of step.data; track text) {
           <span
-            class="bg-gray-300 bg-opacity-70 px-2 rounded text-2xl whitespace-pre-wrap"
+            class="bg-opacity-70 rounded bg-gray-300 px-2 text-2xl whitespace-pre-wrap"
             >{{ text }}</span
-            >
-          }
-        </div>
-      }
-    </div>
+          >
+        }
+      </div>
+    }
   </div>
-  <div
-    class="rounded-2xl p-4 bg-gradient-to-t from-green-700 to-green-900 flex flex-col mt-8"
-    >
-    <h2 class="font-bold text-5xl text-green-300 mb-8">Part 2</h2>
-  </div>
-  
+</div>
+<div
+  class="mt-8 flex flex-col rounded-2xl bg-gradient-to-t from-green-700 to-green-900 p-4"
+>
+  <h2 class="mb-8 text-5xl font-bold text-green-300">Part 2</h2>
+</div>

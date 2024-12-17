@@ -1,18 +1,18 @@
 <h1
-  class="text-6xl font-black font-mono text-center my-6 text-transparent bg-clip-text bg-gradient-to-tr from-green-400 to-green-500"
-  >
+  class="my-6 bg-gradient-to-tr from-green-400 to-green-500 bg-clip-text text-center font-mono text-6xl font-black text-transparent"
+>
   --- Day 8: Handheld Halting ---
 </h1>
 <div
-  class="rounded-2xl p-4 space-y-2 bg-gradient-to-tr from-yellow-700 to-yellow-900"
-  >
+  class="space-y-2 rounded-2xl bg-gradient-to-tr from-yellow-700 to-yellow-900 p-4"
+>
   <div class="mb-8">
-    <h2 class="font-bold text-5xl text-yellow-200 mb-4">Part 1</h2>
-    <h3 class="text-gray-100 font-bold text-5xl">Code execution</h3>
+    <h2 class="mb-4 text-5xl font-bold text-yellow-200">Part 1</h2>
+    <h3 class="text-5xl font-bold text-gray-100">Code execution</h3>
   </div>
   @if (state$ | async; as state) {
     <div class="flex flex-row">
-      <div class="execution-grid font-mono text-white text-2xl">
+      <div class="execution-grid font-mono text-2xl text-white">
         @for (instruction of instructions; track instruction; let i = $index) {
           <div>
             <img
@@ -20,25 +20,24 @@
               alt="➡"
               class="h-8"
               src="./assets/images/arrow.svg"
-              />
+            />
           </div>
           <div>{{ instruction[0] }}</div>
           <div>{{ instruction[1] }}</div>
         }
       </div>
-      <div class="font-mono text-white text-2xl">
+      <div class="font-mono text-2xl text-white">
         <span
           >Next instruction: {{ state.next }} &nbsp; Accumulator:
           {{ state.acc }}</span
-          ><br /><span>Completed instructions: {{ executed | async }}</span>
-        </div>
+        ><br /><span>Completed instructions: {{ executed | async }}</span>
       </div>
-    }
-    <button
-      (click)="startExecution()"
-      class="rounded border border-solid border-white text-white text-2xl px-2 cursor-pointer hover:bg-white hover:bg-opacity-10"
-      >
-      Start execution
-    </button>
-  </div>
-  
+    </div>
+  }
+  <button
+    (click)="startExecution()"
+    class="hover:bg-opacity-10 cursor-pointer rounded border border-solid border-white px-2 text-2xl text-white hover:bg-white"
+  >
+    Start execution
+  </button>
+</div>

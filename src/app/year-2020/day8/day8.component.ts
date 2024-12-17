@@ -12,10 +12,10 @@ import data from './data.json';
 import { NgClass, AsyncPipe } from '@angular/common';
 
 @Component({
-    selector: 'app-day8',
-    templateUrl: './day8.component.html',
-    styleUrls: ['./day8.component.scss'],
-    imports: [NgClass, AsyncPipe]
+  selector: 'app-day8',
+  templateUrl: './day8.component.html',
+  styleUrls: ['./day8.component.scss'],
+  imports: [NgClass, AsyncPipe],
 })
 export class Day8Component {
   public state$ = new BehaviorSubject<{
@@ -37,13 +37,13 @@ export class Day8Component {
       .pipe(
         withLatestFrom(this.state$, this.executed),
         tap(console.log),
-        takeWhile(([_, state, executed]) => !executed.includes(state.next))
+        takeWhile(([_, state, executed]) => !executed.includes(state.next)),
       )
       .subscribe(
         ([_, state, executed]: [
           unknown,
           { next: number; acc: number },
-          number[]
+          number[],
         ]) => {
           this.executed.next([...executed, state.next]);
           const [instr, arg] = this.instructions[state.next];
@@ -64,7 +64,7 @@ export class Day8Component {
               break;
             }
           }
-        }
+        },
       );
   }
 

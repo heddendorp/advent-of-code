@@ -3,9 +3,9 @@ import data from './data.json';
 import { nth } from 'lodash-es';
 
 @Component({
-    selector: 'app-day7',
-    templateUrl: './day7.component.html',
-    styleUrls: ['./day7.component.scss']
+  selector: 'app-day7',
+  templateUrl: './day7.component.html',
+  styleUrls: ['./day7.component.scss'],
 })
 export class Day7Component {
   steps1: {
@@ -19,8 +19,8 @@ export class Day7Component {
   constructor() {
     console.log(
       'light red bags contain 1 bright white bag, 2 muted yellow bags.'.match(
-        /(\w+ \w+) bags contain(.+)./i
-      )
+        /(\w+ \w+) bags contain(.+)./i,
+      ),
     );
     this.steps1.push({
       data: this.exampleInput,
@@ -36,7 +36,7 @@ export class Day7Component {
     });
     this.steps1.push({
       data: this.steps1[1].data.map((line: string) =>
-        line.match(/(\w+ \w+) bags contain(.+)./i)?.slice(1)
+        line.match(/(\w+ \w+) bags contain(.+)./i)?.slice(1),
       ),
       operation: `Find containing bags`,
       display: this.steps1[1].data.map((line: string) =>
@@ -46,7 +46,7 @@ export class Day7Component {
           .map((token, index) => ({
             text: token,
             class: index ? 'neutral' : 'bag',
-          }))
+          })),
       ),
     });
     this.steps1.push({

@@ -1,10 +1,10 @@
-<h1 class="text-gray-50 font-bold text-4xl text-center font-mono mb-6">
+<h1 class="mb-6 text-center font-mono text-4xl font-bold text-gray-50">
   --- Day 2: Rock Paper Scissors ---
 </h1>
 <div
-  class="bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-2xl border backdrop-blur p-4"
-  >
-  <h2 class="font-bold text-2xl mb-2">Problem 1</h2>
+  class="bg-opacity-60 border-opacity-50 rounded-2xl border border-gray-100 bg-gray-50 p-4 backdrop-blur"
+>
+  <h2 class="mb-2 text-2xl font-bold">Problem 1</h2>
   <p class="mb-2">
     We have received a strategy guide from the elves that should help us with a
     game of Rock Paper Scissors. As we are not sure if the guide is correct, we
@@ -12,80 +12,80 @@
   </p>
   <button
     (click)="loadFullRiddle()"
-    class="inline-block rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75"
-    >
+    class="active:text-opacity-75 inline-block rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-[2px] hover:text-white focus:ring focus:outline-none"
+  >
     <span
       class="block rounded-full bg-gray-200 px-4 py-1 text-sm font-medium hover:bg-transparent"
-      >
+    >
       Load full riddle
     </span>
   </button>
 </div>
-<div class="flex flex-row gap-2 items-start">
+<div class="flex flex-row items-start gap-2">
   <div
-    class="bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-xl border overflow-hidden"
-    >
-    <div class="p-2 border-b border-gray-600 border-opacity-50">
+    class="bg-opacity-60 border-opacity-50 overflow-hidden rounded-xl border border-gray-100 bg-gray-50"
+  >
+    <div class="border-opacity-50 border-b border-gray-600 p-2">
       <p>Our riddle input</p>
     </div>
-    <div class="max-h-[50vh] overflow-y-auto overflow-x-hidden-hidden p-2">
-      <p class="whitespace-pre-line font-mono">{{ input$ | async }}</p>
+    <div class="overflow-x-hidden-hidden max-h-[50vh] overflow-y-auto p-2">
+      <p class="font-mono whitespace-pre-line">{{ input$ | async }}</p>
     </div>
   </div>
   <div
-    class="border-gray-100 overflow-hidden border-opacity-50 rounded-xl border"
-    >
+    class="border-opacity-50 overflow-hidden rounded-xl border border-gray-100"
+  >
     <div
-      class="bg-gray-50 bg-opacity-60 p-2 border-b border-gray-600 border-opacity-50"
-      >
+      class="bg-opacity-60 border-opacity-50 border-b border-gray-600 bg-gray-50 p-2"
+    >
       <p>Splitting into rounds</p>
     </div>
     <div
-      class="max-h-[50vh] overflow-y-auto overflow-x-hidden p-2 flex flex-col gap-2"
-      >
+      class="flex max-h-[50vh] flex-col gap-2 overflow-x-hidden overflow-y-auto p-2"
+    >
       @for (round of rounds$ | async; track round) {
         <p
-          class="whitespace-pre-line font-mono bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-lg border p-2"
-          >
+          class="bg-opacity-60 border-opacity-50 rounded-lg border border-gray-100 bg-gray-50 p-2 font-mono whitespace-pre-line"
+        >
           {{ round }}
         </p>
       }
     </div>
   </div>
   <div
-    class="border-gray-100 overflow-hidden border-opacity-50 rounded-xl border"
-    >
+    class="border-opacity-50 overflow-hidden rounded-xl border border-gray-100"
+  >
     <div
-      class="bg-gray-50 bg-opacity-60 p-2 border-b border-gray-600 border-opacity-50"
-      >
+      class="bg-opacity-60 border-opacity-50 border-b border-gray-600 bg-gray-50 p-2"
+    >
       <p>Decoding</p>
     </div>
     <div
-      class="max-h-[50vh] overflow-y-auto overflow-x-hidden p-2 flex flex-col gap-2"
-      >
+      class="flex max-h-[50vh] flex-col gap-2 overflow-x-hidden overflow-y-auto p-2"
+    >
       @for (game of moves$ | async; track game) {
         <div
-          class="flex flex-row gap-2 whitespace-pre-line font-mono bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-lg border p-2"
-          >
+          class="bg-opacity-60 border-opacity-50 flex flex-row gap-2 rounded-lg border border-gray-100 bg-gray-50 p-2 font-mono whitespace-pre-line"
+        >
           @for (move of game; track move) {
             @switch (move) {
               @case ('R') {
-<!--                <svg-icon-->
-<!--                  [svgStyle]="{ 'width.px': 24, 'height.px': 24 }"-->
-<!--                  src="/assets/icons/icons8-hand-rock.svg"-->
-<!--                ></svg-icon>-->
+                <!--                <svg-icon-->
+                <!--                  [svgStyle]="{ 'width.px': 24, 'height.px': 24 }"-->
+                <!--                  src="/assets/icons/icons8-hand-rock.svg"-->
+                <!--                ></svg-icon>-->
               }
               @case ('P') {
-<!--                <svg-icon-->
-<!--                  [svgStyle]="{ 'width.px': 24, 'height.px': 24 }"-->
-<!--                  src="/assets/icons/icons8-hand.svg"-->
-<!--                ></svg-icon>-->
+                <!--                <svg-icon-->
+                <!--                  [svgStyle]="{ 'width.px': 24, 'height.px': 24 }"-->
+                <!--                  src="/assets/icons/icons8-hand.svg"-->
+                <!--                ></svg-icon>-->
               }
               @case ('S') {
-<!--                <svg-icon-->
-<!--                  [svgStyle]="{ 'width.px': 24, 'height.px': 24 }"-->
-<!--                  src="/assets/icons/icons8-hand-scissors.svg"-->
-<!--                ></svg-icon>-->
+                <!--                <svg-icon-->
+                <!--                  [svgStyle]="{ 'width.px': 24, 'height.px': 24 }"-->
+                <!--                  src="/assets/icons/icons8-hand-scissors.svg"-->
+                <!--                ></svg-icon>-->
               }
             }
           }
@@ -94,140 +94,140 @@
     </div>
   </div>
   <div
-    class="border-gray-100 overflow-hidden border-opacity-50 rounded-xl border"
-    >
+    class="border-opacity-50 overflow-hidden rounded-xl border border-gray-100"
+  >
     <div
-      class="bg-gray-50 bg-opacity-60 p-2 border-b border-gray-600 border-opacity-50"
-      >
+      class="bg-opacity-60 border-opacity-50 border-b border-gray-600 bg-gray-50 p-2"
+    >
       <p>Calculating score</p>
     </div>
     <div
-      class="max-h-[50vh] overflow-y-auto overflow-x-hidden p-2 flex flex-col gap-2"
-      >
+      class="flex max-h-[50vh] flex-col gap-2 overflow-x-hidden overflow-y-auto p-2"
+    >
       @for (score of scores$ | async; track score) {
         <p
-          class="whitespace-pre-line font-mono bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-lg border p-2"
-          >
+          class="bg-opacity-60 border-opacity-50 rounded-lg border border-gray-100 bg-gray-50 p-2 font-mono whitespace-pre-line"
+        >
           {{ score }}
         </p>
       }
     </div>
   </div>
   <div
-    class="bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-xl border"
-    >
-    <div class="p-2 border-b border-gray-600 border-opacity-50">
+    class="bg-opacity-60 border-opacity-50 rounded-xl border border-gray-100 bg-gray-50"
+  >
+    <div class="border-opacity-50 border-b border-gray-600 p-2">
       <p>Score sum</p>
     </div>
-    <div class="overflow-y-auto overflow-x-hidden p-2">
-      <p class="whitespace-pre-line font-mono">{{ scoreSum$ | async }}</p>
+    <div class="overflow-x-hidden overflow-y-auto p-2">
+      <p class="font-mono whitespace-pre-line">{{ scoreSum$ | async }}</p>
     </div>
   </div>
 </div>
 <div
-  class="bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-2xl border backdrop-blur p-4"
-  >
-  <h2 class="font-bold text-2xl mb-2">Problem 2</h2>
+  class="bg-opacity-60 border-opacity-50 rounded-2xl border border-gray-100 bg-gray-50 p-4 backdrop-blur"
+>
+  <h2 class="mb-2 text-2xl font-bold">Problem 2</h2>
   <p class="mb-2">
     Now we know the correct interpretation of the strategy guide and have to
     adjust our score.
   </p>
   <button
     (click)="loadFullRiddle()"
-    class="inline-block rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-[2px] hover:text-white focus:outline-none focus:ring active:text-opacity-75"
-    >
+    class="active:text-opacity-75 inline-block rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-[2px] hover:text-white focus:ring focus:outline-none"
+  >
     <span
       class="block rounded-full bg-gray-200 px-4 py-1 text-sm font-medium hover:bg-transparent"
-      >
+    >
       Load full riddle
     </span>
   </button>
 </div>
-<div class="flex flex-row gap-2 items-start">
+<div class="flex flex-row items-start gap-2">
   <div
-    class="bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-xl border overflow-hidden"
-    >
-    <div class="p-2 border-b border-gray-600 border-opacity-50">
+    class="bg-opacity-60 border-opacity-50 overflow-hidden rounded-xl border border-gray-100 bg-gray-50"
+  >
+    <div class="border-opacity-50 border-b border-gray-600 p-2">
       <p>Our riddle input</p>
     </div>
-    <div class="max-h-[50vh] overflow-y-auto overflow-x-hidden p-2">
-      <p class="whitespace-pre-line font-mono">{{ input$ | async }}</p>
+    <div class="max-h-[50vh] overflow-x-hidden overflow-y-auto p-2">
+      <p class="font-mono whitespace-pre-line">{{ input$ | async }}</p>
     </div>
   </div>
   <div
-    class="border-gray-100 overflow-hidden border-opacity-50 rounded-xl border"
-    >
+    class="border-opacity-50 overflow-hidden rounded-xl border border-gray-100"
+  >
     <div
-      class="bg-gray-50 bg-opacity-60 p-2 border-b border-gray-600 border-opacity-50"
-      >
+      class="bg-opacity-60 border-opacity-50 border-b border-gray-600 bg-gray-50 p-2"
+    >
       <p>Splitting into rounds</p>
     </div>
     <div
-      class="max-h-[50vh] overflow-y-auto overflow-x-hidden p-2 flex flex-col gap-2"
-      >
+      class="flex max-h-[50vh] flex-col gap-2 overflow-x-hidden overflow-y-auto p-2"
+    >
       @for (round of rounds$ | async; track round) {
         <p
-          class="whitespace-pre-line font-mono bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-lg border p-2"
-          >
+          class="bg-opacity-60 border-opacity-50 rounded-lg border border-gray-100 bg-gray-50 p-2 font-mono whitespace-pre-line"
+        >
           {{ round }}
         </p>
       }
     </div>
   </div>
   <div
-    class="border-gray-100 overflow-hidden border-opacity-50 rounded-xl border"
-    >
+    class="border-opacity-50 overflow-hidden rounded-xl border border-gray-100"
+  >
     <div
-      class="bg-gray-50 bg-opacity-60 p-2 border-b border-gray-600 border-opacity-50"
-      >
+      class="bg-opacity-60 border-opacity-50 border-b border-gray-600 bg-gray-50 p-2"
+    >
       <p>Setting recommended move</p>
     </div>
     <div
-      class="max-h-[50vh] overflow-y-auto overflow-x-hidden p-2 flex flex-col gap-2"
-      >
+      class="flex max-h-[50vh] flex-col gap-2 overflow-x-hidden overflow-y-auto p-2"
+    >
       @for (round of recommendedRounds$ | async; track round) {
         <p
-          class="whitespace-pre-line font-mono bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-lg border p-2"
-          >
+          class="bg-opacity-60 border-opacity-50 rounded-lg border border-gray-100 bg-gray-50 p-2 font-mono whitespace-pre-line"
+        >
           {{ round }}
         </p>
       }
     </div>
   </div>
   <div
-    class="border-gray-100 overflow-hidden border-opacity-50 rounded-xl border"
-    >
+    class="border-opacity-50 overflow-hidden rounded-xl border border-gray-100"
+  >
     <div
-      class="bg-gray-50 bg-opacity-60 p-2 border-b border-gray-600 border-opacity-50"
-      >
+      class="bg-opacity-60 border-opacity-50 border-b border-gray-600 bg-gray-50 p-2"
+    >
       <p>Decoding</p>
     </div>
     <div
-      class="max-h-[50vh] overflow-y-auto overflow-x-hidden p-2 flex flex-col gap-2"
-      >
+      class="flex max-h-[50vh] flex-col gap-2 overflow-x-hidden overflow-y-auto p-2"
+    >
       @for (game of recommendedMoves$ | async; track game) {
         <div
-          class="flex flex-row gap-2 whitespace-pre-line font-mono bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-lg border p-2"
-          >
+          class="bg-opacity-60 border-opacity-50 flex flex-row gap-2 rounded-lg border border-gray-100 bg-gray-50 p-2 font-mono whitespace-pre-line"
+        >
           @for (move of game; track move) {
             @switch (move) {
               @case ('R') {
-<!--                <svg-icon-->
-<!--                  [svgStyle]="{ 'width.px': 24, 'height.px': 24 }"-->
-<!--                  src="/assets/icons/icons8-hand-rock.svg"-->
-<!--                ></svg-icon>-->
+                <!--                <svg-icon-->
+                <!--                  [svgStyle]="{ 'width.px': 24, 'height.px': 24 }"-->
+                <!--                  src="/assets/icons/icons8-hand-rock.svg"-->
+                <!--                ></svg-icon>-->
               }
               @case ('P') {
-<!--                <svg-icon-->
-<!--                  [svgStyle]="{ 'width.px': 24, 'height.px': 24 }"-->
-<!--                  src="/assets/icons/icons8-hand.svg"-->
-<!--                ></svg-icon>-->
+                <!--                <svg-icon-->
+                <!--                  [svgStyle]="{ 'width.px': 24, 'height.px': 24 }"-->
+                <!--                  src="/assets/icons/icons8-hand.svg"-->
+                <!--                ></svg-icon>-->
               }
               @case ('S') {
-<!--                <svg-icon-->
-<!--                  [svgStyle]="{ 'width.px': 24, 'height.px': 24 }"-->
-<!--                  src="/assets/icons/icons8-hand-scissors.svg"-->
-<!--                ></svg-icon>-->
+                <!--                <svg-icon-->
+                <!--                  [svgStyle]="{ 'width.px': 24, 'height.px': 24 }"-->
+                <!--                  src="/assets/icons/icons8-hand-scissors.svg"-->
+                <!--                ></svg-icon>-->
               }
             }
           }
@@ -236,33 +236,33 @@
     </div>
   </div>
   <div
-    class="border-gray-100 overflow-hidden border-opacity-50 rounded-xl border"
-    >
+    class="border-opacity-50 overflow-hidden rounded-xl border border-gray-100"
+  >
     <div
-      class="bg-gray-50 bg-opacity-60 p-2 border-b border-gray-600 border-opacity-50"
-      >
+      class="bg-opacity-60 border-opacity-50 border-b border-gray-600 bg-gray-50 p-2"
+    >
       <p>Calculating score</p>
     </div>
     <div
-      class="max-h-[50vh] overflow-y-auto overflow-x-hidden p-2 flex flex-col gap-2"
-      >
+      class="flex max-h-[50vh] flex-col gap-2 overflow-x-hidden overflow-y-auto p-2"
+    >
       @for (score of recommendedScores$ | async; track score) {
         <p
-          class="whitespace-pre-line font-mono bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-lg border p-2"
-          >
+          class="bg-opacity-60 border-opacity-50 rounded-lg border border-gray-100 bg-gray-50 p-2 font-mono whitespace-pre-line"
+        >
           {{ score }}
         </p>
       }
     </div>
   </div>
   <div
-    class="bg-gray-50 bg-opacity-60 border-gray-100 border-opacity-50 rounded-xl border"
-    >
-    <div class="p-2 border-b border-gray-600 border-opacity-50">
+    class="bg-opacity-60 border-opacity-50 rounded-xl border border-gray-100 bg-gray-50"
+  >
+    <div class="border-opacity-50 border-b border-gray-600 p-2">
       <p>Score sum</p>
     </div>
-    <div class="overflow-y-auto overflow-x-hidden p-2">
-      <p class="whitespace-pre-line font-mono">
+    <div class="overflow-x-hidden overflow-y-auto p-2">
+      <p class="font-mono whitespace-pre-line">
         {{ recommendedScoreSum$ | async }}
       </p>
     </div>

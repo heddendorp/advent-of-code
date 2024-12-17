@@ -62,52 +62,52 @@ const gameScore = (a: 'R' | 'P' | 'S', b: 'R' | 'P' | 'S') => {
   }
 };
 @Component({
-    selector: 'app-day2',
-    imports: [CommonModule],
-    templateUrl: './day2.component.html',
-    styleUrls: ['./day2.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-day2',
+  imports: [CommonModule],
+  templateUrl: './day2.component.html',
+  styleUrls: ['./day2.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Day2Component {
   public input$ = new BehaviorSubject<string>(data.example);
   public rounds$ = this.input$.pipe(
     map((input) => input.split('\n')),
-    shareReplay(1)
+    shareReplay(1),
   );
   public recommendedRounds$ = this.rounds$.pipe(
-    map((rounds) => rounds.map((round) => recommendedMoveMap[round]))
+    map((rounds) => rounds.map((round) => recommendedMoveMap[round])),
   );
   public moves$ = this.rounds$.pipe(
     map((rounds) =>
-      rounds.map((round) => round.split(' ').map((move) => moveMap[move]))
-    )
+      rounds.map((round) => round.split(' ').map((move) => moveMap[move])),
+    ),
   );
   public recommendedMoves$ = this.recommendedRounds$.pipe(
     map((rounds) =>
-      rounds.map((round) => round.split(' ').map((move) => moveMap[move]))
-    )
+      rounds.map((round) => round.split(' ').map((move) => moveMap[move])),
+    ),
   );
   public scores$ = this.moves$.pipe(
     map((moves) =>
       moves.map((move) => {
         const [a, b] = move;
         return gameScore(a, b) + moveScore[b];
-      })
-    )
+      }),
+    ),
   );
   public recommendedScores$ = this.recommendedMoves$.pipe(
     map((moves) =>
       moves.map((move) => {
         const [a, b] = move;
         return gameScore(a, b) + moveScore[b];
-      })
-    )
+      }),
+    ),
   );
   public scoreSum$ = this.scores$.pipe(
-    map((scores) => scores.reduce((a, b) => a + b, 0))
+    map((scores) => scores.reduce((a, b) => a + b, 0)),
   );
   public recommendedScoreSum$ = this.recommendedScores$.pipe(
-    map((scores) => scores.reduce((a, b) => a + b, 0))
+    map((scores) => scores.reduce((a, b) => a + b, 0)),
   );
   loadFullRiddle() {
     this.input$.next(data.riddle);

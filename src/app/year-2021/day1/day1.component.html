@@ -1,5 +1,5 @@
 <main class="p-4 dark:text-white">
-  <h1 class="text-2xl font-mono font-black mb-4">--- Day 1: Sonar Sweep ---</h1>
+  <h1 class="mb-4 font-mono text-2xl font-black">--- Day 1: Sonar Sweep ---</h1>
   <p class="max-w-xl">
     The task today is to analyze the data from the sonar and learn more about
     the depths of the ocean.
@@ -12,16 +12,16 @@
   }
   @if (increaseSums | async) {
     <p class="max-w-xl">
-      There where {{ increaseSums | async }} steps of increase in the depth of the
-      readout sums.
+      There where {{ increaseSums | async }} steps of increase in the depth of
+      the readout sums.
     </p>
   }
   @if (currentStep | async; as step) {
     <div class="mb-4">
       <div>
-        <h3 class="font-bold mt-6 mb-2">Load lines</h3>
+        <h3 class="mt-6 mb-2 font-bold">Load lines</h3>
         <p>We draw all lines that we got from the input.</p>
-        <div class="flex lg:row space-x-4">
+        <div class="lg:row flex space-x-4">
           <button (click)="loadExample()" class="button" type="button">
             Load example
           </button>
@@ -34,6 +34,6 @@
   }
   <canvas
     #canvas
-    class="w-full h-full rounded-lg bg-gray-300 dark:bg-gray-800 dark:border-gray-300 p-2 border border-gray-800"
+    class="h-full w-full rounded-lg border border-gray-800 bg-gray-300 p-2 dark:border-gray-300 dark:bg-gray-800"
   ></canvas>
 </main>

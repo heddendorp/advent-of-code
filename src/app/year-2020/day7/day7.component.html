@@ -1,48 +1,47 @@
 <h1
-  class="text-6xl font-black font-mono text-center my-6 text-transparent bg-clip-text bg-gradient-to-tr from-yellow-400 to-yellow-500"
-  >
+  class="my-6 bg-gradient-to-tr from-yellow-400 to-yellow-500 bg-clip-text text-center font-mono text-6xl font-black text-transparent"
+>
   --- Day 7: Handy Haversacks ---
 </h1>
 <div
-  class="rounded-2xl p-4 space-y-2 bg-gradient-to-tr from-red-700 to-red-900"
-  >
+  class="space-y-2 rounded-2xl bg-gradient-to-tr from-red-700 to-red-900 p-4"
+>
   <div class="mb-8">
-    <h2 class="font-bold text-5xl text-red-200 mb-4">Part 1</h2>
-    <h3 class="text-gray-100 font-bold text-5xl">At least one gold bag</h3>
+    <h2 class="mb-4 text-5xl font-bold text-red-200">Part 1</h2>
+    <h3 class="text-5xl font-bold text-gray-100">At least one gold bag</h3>
   </div>
   <div class="flex flex-col items-stretch">
     @for (step of steps1; track step; let i = $index) {
       <div
-        class="flex flex-row font-mono space-x-4 items-stretch border-b border-white border-solid py-4"
-        >
-        <div class="flex flex-col mr-4 justify-around">
-          <span class="text-9xl font-sans text-white">
+        class="flex flex-row items-stretch space-x-4 border-b border-solid border-white py-4 font-mono"
+      >
+        <div class="mr-4 flex flex-col justify-around">
+          <span class="font-sans text-9xl text-white">
             {{ i + 1 }}
           </span>
         </div>
-        <div class="flex flex-col space-y-2 justify-center">
+        <div class="flex flex-col justify-center space-y-2">
           <span
-            class="bg-gray-300 bg-opacity-70 px-2 rounded text-2xl whitespace-pre-wrap"
-            >
+            class="bg-opacity-70 rounded bg-gray-300 px-2 text-2xl whitespace-pre-wrap"
+          >
             {{ step.operation }}
           </span>
         </div>
-        <div class="flex flex-col space-y-2 justify-between">
+        <div class="flex flex-col justify-between space-y-2">
           @for (line of step.display; track line) {
-            <div
-              class="flex flex-row space-x-2 justify-start"
-              >
+            <div class="flex flex-row justify-start space-x-2">
               @for (item of line; track item) {
                 <span
-                  class="px-2 rounded text-2xl whitespace-pre-wrap {{ item.class }}"
+                  class="px-2 rounded text-2xl whitespace-pre-wrap {{
+                    item.class
+                  }}"
                   >{{ item.text }}</span
-                  >
-                }
-              </div>
-            }
-          </div>
+                >
+              }
+            </div>
+          }
         </div>
-      }
-    </div>
+      </div>
+    }
   </div>
-  
+</div>

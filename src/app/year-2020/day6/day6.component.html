@@ -1,70 +1,69 @@
 <h1
-  class="text-6xl font-black font-mono text-center my-6 text-transparent bg-clip-text bg-gradient-to-tr from-blue-400 to-blue-500"
-  >
+  class="my-6 bg-gradient-to-tr from-blue-400 to-blue-500 bg-clip-text text-center font-mono text-6xl font-black text-transparent"
+>
   --- Day 6: Custom Customs ---
 </h1>
 <div
-  class="rounded-2xl p-4 space-y-2 bg-gradient-to-tr from-pink-700 to-pink-900"
-  >
+  class="space-y-2 rounded-2xl bg-gradient-to-tr from-pink-700 to-pink-900 p-4"
+>
   <div class="mb-8">
-    <h2 class="font-bold text-5xl text-pink-200 mb-4">Part 1</h2>
-    <h3 class="text-gray-100 font-bold text-5xl">Anyone answered yes</h3>
+    <h2 class="mb-4 text-5xl font-bold text-pink-200">Part 1</h2>
+    <h3 class="text-5xl font-bold text-gray-100">Anyone answered yes</h3>
   </div>
-  <div class="flex flex-row font-mono space-x-4 items-stretch">
+  <div class="flex flex-row items-stretch space-x-4 font-mono">
     @for (step of steps1; track step) {
-      <div class="flex flex-col space-y-2 justify-center">
+      <div class="flex flex-col justify-center space-y-2">
         <span
-          class="bg-gray-300 bg-opacity-70 px-2 rounded text-2xl whitespace-pre-wrap"
-          >
+          class="bg-opacity-70 rounded bg-gray-300 px-2 text-2xl whitespace-pre-wrap"
+        >
           {{ step.operation }}
         </span>
       </div>
-      <div class="flex flex-col space-y-2 justify-between">
+      <div class="flex flex-col justify-between space-y-2">
         @for (text of step.data; track text) {
           <span
-            class="bg-gray-300 bg-opacity-70 px-2 rounded text-2xl whitespace-pre-wrap"
+            class="bg-opacity-70 rounded bg-gray-300 px-2 text-2xl whitespace-pre-wrap"
             >{{ text }}</span
-            >
-          }
-        </div>
-      }
-    </div>
-    <div>
-      <button class="rounded border border-white border-solid text-white p-4">
-        Next step
-      </button>
-    </div>
-  </div>
-  <div
-    class="rounded-2xl p-4 space-y-2 bg-gradient-to-tr from-purple-700 to-purple-900 mt-8"
-    >
-    <div class="mb-8">
-      <h2 class="font-bold text-5xl text-purple-200 mb-4">Part 2</h2>
-      <h3 class="text-gray-100 font-bold text-5xl">Everyone answered yes</h3>
-    </div>
-    <div class="flex flex-row font-mono space-x-4 items-stretch">
-      @for (step of steps2; track step) {
-        <div class="flex flex-col space-y-2 justify-center">
-          <span
-            class="bg-gray-300 bg-opacity-70 px-2 rounded text-2xl whitespace-pre-wrap"
-            >
-            {{ step.operation }}
-          </span>
-        </div>
-        <div class="flex flex-col space-y-2 justify-between">
-          @for (text of step.data; track text) {
-            <span
-              class="bg-gray-300 bg-opacity-70 px-2 rounded text-2xl whitespace-pre-wrap"
-              >{{ text }}</span
-              >
-            }
-          </div>
+          >
         }
       </div>
-      <div>
-        <button class="rounded border border-white border-solid text-white p-4">
-          Next step
-        </button>
+    }
+  </div>
+  <div>
+    <button class="rounded border border-solid border-white p-4 text-white">
+      Next step
+    </button>
+  </div>
+</div>
+<div
+  class="mt-8 space-y-2 rounded-2xl bg-gradient-to-tr from-purple-700 to-purple-900 p-4"
+>
+  <div class="mb-8">
+    <h2 class="mb-4 text-5xl font-bold text-purple-200">Part 2</h2>
+    <h3 class="text-5xl font-bold text-gray-100">Everyone answered yes</h3>
+  </div>
+  <div class="flex flex-row items-stretch space-x-4 font-mono">
+    @for (step of steps2; track step) {
+      <div class="flex flex-col justify-center space-y-2">
+        <span
+          class="bg-opacity-70 rounded bg-gray-300 px-2 text-2xl whitespace-pre-wrap"
+        >
+          {{ step.operation }}
+        </span>
       </div>
-    </div>
-    
+      <div class="flex flex-col justify-between space-y-2">
+        @for (text of step.data; track text) {
+          <span
+            class="bg-opacity-70 rounded bg-gray-300 px-2 text-2xl whitespace-pre-wrap"
+            >{{ text }}</span
+          >
+        }
+      </div>
+    }
+  </div>
+  <div>
+    <button class="rounded border border-solid border-white p-4 text-white">
+      Next step
+    </button>
+  </div>
+</div>

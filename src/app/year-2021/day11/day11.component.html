@@ -1,17 +1,17 @@
-<main class="p-4 dark:text-white min-h-full">
-  <h1 class="text-2xl font-mono font-black mb-4">
+<main class="min-h-full p-4 dark:text-white">
+  <h1 class="mb-4 font-mono text-2xl font-black">
     --- Day 11: Dumbo Octopus ---
   </h1>
   <p class="max-w-xl">
     Our task today is to simulate a field of flashing fish.
   </p>
-  <div class="flex lg:row lg:max-w-6xl lg:h-full">
+  <div class="lg:row flex lg:h-full lg:max-w-6xl">
     @if (currentStep | async; as step) {
       <div>
         <div>
-          <h3 class="font-bold mt-6 mb-2">Load positions</h3>
+          <h3 class="mt-6 mb-2 font-bold">Load positions</h3>
           <p>We set up our riddle</p>
-          <div class="flex lg:row space-x-4">
+          <div class="lg:row flex space-x-4">
             <button (click)="loadExample()" class="button" type="button">
               Load example
             </button>
@@ -21,10 +21,14 @@
           </div>
           @if (step >= 2) {
             <div>
-              <h3 class="font-bold mt-6 mb-2">Run flash simulation</h3>
+              <h3 class="mt-6 mb-2 font-bold">Run flash simulation</h3>
               <p>All places are increased each tick and flash at 9</p>
-              <div class="flex lg:row space-x-4">
-                <button (click)="startSimulation()" class="button" type="button">
+              <div class="lg:row flex space-x-4">
+                <button
+                  (click)="startSimulation()"
+                  class="button"
+                  type="button"
+                >
                   Start Simulation
                 </button>
               </div>
@@ -34,21 +38,21 @@
       </div>
     }
     <div class="p-4">
-      <h3 class="font-bold mb-4">Visualisation of our steps</h3>
+      <h3 class="mb-4 font-bold">Visualisation of our steps</h3>
       <div>
         <canvas
           #canvas
           width="300px"
           height="300px"
-          class="rounded-lg bg-gray-300 dark:bg-gray-800 dark:border-gray-300 p-2 border border-gray-800"
+          class="rounded-lg border border-gray-800 bg-gray-300 p-2 dark:border-gray-300 dark:bg-gray-800"
         ></canvas>
         <div class="relative pt-1">
           <div
-            class="overflow-hidden h-2 text-xs flex rounded bg-purple-200 w-full"
-            >
+            class="flex h-2 w-full overflow-hidden rounded bg-purple-200 text-xs"
+          >
             <div
               [style.width]="(simProgress$ | async) + '%'"
-              class="transition-all shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-purple-500"
+              class="flex flex-col justify-center bg-purple-500 text-center whitespace-nowrap text-white shadow-none transition-all"
             ></div>
           </div>
         </div>
